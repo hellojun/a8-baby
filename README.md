@@ -1,2 +1,7 @@
-# a8-baby
-a8.baby personal site: wallet, risk control, market making, settlement
+# a8.baby
+
+个人品牌站第一版（单页静态站）。
+
+- 文件：`a8-baby.html`，直接用浏览器打开即可预览。
+- 页面中标记为【待补充】的内容需要在上线前替换。
+- 联系方式：Telegram @Jun0bj
