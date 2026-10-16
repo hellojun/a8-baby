@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>a8.baby — 钱包、风控、做市的系统落地</title>
-<meta name="description" content="钱包、风控、做市、清结算。把交易系统从能演示做到能运营。">
+<title>Jun — a8.baby</title>
+<meta name="description" content="Jun 的个人主页。从钱包和交易所基础设施做起，做过应用链与 NFT，这两年在 AI Agent 与链上系统的交叉点上。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@600;700&display=swap" rel="stylesheet">
 <style>
-/* Art direction: 交易系统实战派 → 克制、专业、可信
-   Palette: warm neutral, single teal accent. Typography: Noto Serif SC display + Satoshi/Noto Sans SC body. Density: balanced */
+/* Art direction: 一个写代码的人的自我介绍 → 平实、克制、有时间感
+   Palette: warm neutral, single teal accent. Typography: Noto Serif SC display + Satoshi/Noto Sans SC body. */
 :root,[data-theme="light"]{
 --color-bg:#f7f6f2;--color-surface:#f9f8f5;--color-surface-2:#fbfbf9;--color-surface-offset:#f3f0ec;--color-divider:#dcd9d5;--color-border:#d4d1ca;
 --color-text:#28251d;--color-text-muted:#625f59;--color-text-faint:#8a8882;--color-text-inverse:#f9f8f4;
@@ -30,7 +30,7 @@
 --radius-sm:.375rem;--radius-md:.5rem;--radius-lg:.75rem;--radius-full:9999px;
 --transition-interactive:180ms cubic-bezier(.16,1,.3,1);
 --font-display:'Noto Serif SC','Songti SC',serif;--font-body:'Satoshi','Noto Sans SC','PingFang SC',sans-serif;
---content-default:960px;--content-wide:1120px;
+--content-wide:1120px;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:none;text-size-adjust:none;-webkit-font-smoothing:antialiased;scroll-behavior:smooth;scroll-padding-top:var(--space-16)}
@@ -48,12 +48,12 @@ a,button{transition:color var(--transition-interactive),background var(--transit
 header{position:sticky;top:0;z-index:50;background:color-mix(in oklab,var(--color-bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid oklch(from var(--color-text) l c h/.1)}
 .bar{display:flex;align-items:center;justify-content:space-between;height:64px;gap:var(--space-4)}
 .brand{display:flex;align-items:center;gap:var(--space-2);text-decoration:none;font-weight:700;color:var(--color-text)}
-nav{display:flex;align-items:center;gap:var(--space-6)}
+nav{display:flex;align-items:center;gap:var(--space-5)}
 nav a{font-size:var(--text-sm);text-decoration:none;color:var(--color-text-muted)}
 nav a:hover{color:var(--color-text)}
 .icon-btn{width:44px;height:44px;display:grid;place-items:center;border-radius:var(--radius-md);color:var(--color-text-muted)}
 .icon-btn:hover{color:var(--color-text);background:var(--color-surface-offset)}
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 var(--space-6);border-radius:var(--radius-md);font-size:var(--text-sm);font-weight:500;text-decoration:none;border:1px solid transparent}
+.btn{display:inline-flex;align-items:center;gap:var(--space-2);justify-content:center;min-height:44px;padding:0 var(--space-6);border-radius:var(--radius-md);font-size:var(--text-sm);font-weight:500;text-decoration:none;border:1px solid transparent}
 .btn-primary{background:var(--color-primary);color:#fff}
 .btn-primary:hover{background:var(--color-primary-hover)}
 .btn-ghost{border-color:oklch(from var(--color-text) l c h/.2);color:var(--color-text)}
@@ -62,47 +62,65 @@ nav a:hover{color:var(--color-text)}
 .hero{padding-block:clamp(var(--space-16),12vw,var(--space-24)) clamp(var(--space-12),8vw,var(--space-20))}
 .eyebrow{font-size:var(--text-xs);letter-spacing:.14em;text-transform:uppercase;color:var(--color-primary);font-weight:700;margin-bottom:var(--space-6)}
 h1{font-family:var(--font-display);font-size:var(--text-2xl);font-weight:700;max-width:18ch;letter-spacing:-.01em}
-.hero p.lead{margin-top:var(--space-6);font-size:var(--text-lg);color:var(--color-text-muted);max-width:40ch;line-height:1.6}
+.hero p.lead{margin-top:var(--space-6);font-size:var(--text-lg);color:var(--color-text-muted);max-width:44ch;line-height:1.6}
 .cta{display:flex;flex-wrap:wrap;gap:var(--space-3);margin-top:var(--space-8)}
 .stats{display:flex;flex-wrap:wrap;gap:var(--space-3) var(--space-8);margin-top:var(--space-12);padding-top:var(--space-6);border-top:1px solid oklch(from var(--color-text) l c h/.1);font-size:var(--text-sm);color:var(--color-text-muted)}
+.stats b{color:var(--color-text);font-weight:700;font-variant-numeric:tabular-nums}
 section{padding-block:clamp(var(--space-12),7vw,var(--space-20))}
 .sec-head{display:grid;gap:var(--space-3);margin-bottom:var(--space-10)}
 h2{font-family:var(--font-display);font-size:var(--text-xl);font-weight:700}
 .sec-head p{color:var(--color-text-muted);font-size:var(--text-base)}
 .alt{background:var(--color-surface-offset)}
-.rows{display:grid;border-top:1px solid oklch(from var(--color-text) l c h/.12)}
-.row{display:grid;grid-template-columns:3rem 1fr;gap:var(--space-4);padding-block:var(--space-6);border-bottom:1px solid oklch(from var(--color-text) l c h/.12)}
-.row .n{font-size:var(--text-sm);color:var(--color-text-faint);font-variant-numeric:tabular-nums;padding-top:.35rem}
-.row h3{font-size:var(--text-lg);font-weight:700;font-family:var(--font-body)}
-.row p{color:var(--color-text-muted);margin-top:var(--space-2)}
-@media(min-width:800px){.row{grid-template-columns:4rem 16rem 1fr;align-items:baseline}.row p{margin-top:0}}
-.proj{display:grid;gap:var(--space-4);grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr))}
+.tag{display:inline-block;font-size:var(--text-xs);padding:2px var(--space-3);border-radius:var(--radius-full);background:var(--color-primary-highlight);color:var(--color-primary);font-weight:500;margin-right:var(--space-1);margin-bottom:var(--space-1)}
+.tag.dim{background:oklch(from var(--color-text) l c h/.08);color:var(--color-text-muted)}
+/* now */
+.now{display:grid;gap:var(--space-4);grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr))}
 .card{background:var(--color-surface);border:1px solid oklch(from var(--color-text) l c h/.1);border-radius:var(--radius-lg);padding:var(--space-6);box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:var(--space-3)}
-.card.feature{grid-column:1/-1}
-@media(min-width:800px){.card.feature{flex-direction:row;gap:var(--space-8);align-items:flex-start}.card.feature>div:first-child{flex:1}.card.feature>div:last-child{flex:1}}
-.tag{display:inline-block;font-size:var(--text-xs);padding:2px var(--space-3);border-radius:var(--radius-full);background:var(--color-primary-highlight);color:var(--color-primary);font-weight:500;margin-right:var(--space-1)}
 .card h3{font-size:var(--text-lg);font-family:var(--font-body)}
 .card p{color:var(--color-text-muted);font-size:var(--text-sm)}
-.card a.more{font-size:var(--text-sm);color:var(--color-primary);margin-top:auto;display:inline-block;min-height:24px}
-.shot{aspect-ratio:16/10;border:1px dashed oklch(from var(--color-text) l c h/.25);border-radius:var(--radius-md);display:grid;place-items:center;color:var(--color-text-faint);font-size:var(--text-sm);text-align:center;padding:var(--space-4);background:var(--color-surface-offset)}
-.cases{display:grid;gap:var(--space-4)}
-.case{display:grid;gap:var(--space-2);padding:var(--space-6);border:1px solid oklch(from var(--color-text) l c h/.1);border-radius:var(--radius-lg);background:var(--color-surface)}
-.case dl{display:grid;gap:var(--space-2);font-size:var(--text-sm)}
-@media(min-width:800px){.case dl{grid-template-columns:5rem 1fr;gap:var(--space-2) var(--space-4)}}
-.case dt{color:var(--color-text-faint)}
-.case dd{color:var(--color-text-muted)}
-.todo{color:var(--color-primary);font-weight:500}
-.two{display:grid;gap:var(--space-8)}
-@media(min-width:800px){.two{grid-template-columns:1fr 1.2fr}}
-.flow{list-style:none;display:grid;gap:0;counter-reset:s}
-.flow li{counter-increment:s;display:grid;grid-template-columns:2rem 1fr;padding-block:var(--space-3);border-bottom:1px solid oklch(from var(--color-text) l c h/.1);font-size:var(--text-sm);color:var(--color-text-muted)}
-.flow li::before{content:counter(s);color:var(--color-primary);font-weight:700;font-variant-numeric:tabular-nums}
+.card a.more{font-size:var(--text-sm);color:var(--color-primary);margin-top:auto;display:inline-block;min-height:24px;text-decoration:none}
+.card a.more:hover{text-decoration:underline}
+/* timeline */
+.tl{list-style:none;display:grid;border-top:1px solid oklch(from var(--color-text) l c h/.12)}
+.tl li{display:grid;grid-template-columns:1fr;gap:var(--space-2);padding-block:var(--space-6);border-bottom:1px solid oklch(from var(--color-text) l c h/.12)}
+.tl .y{font-family:var(--font-display);font-size:var(--text-lg);font-weight:700;color:var(--color-primary);font-variant-numeric:tabular-nums;line-height:1.3}
+.tl h3{font-size:var(--text-base);font-weight:700;font-family:var(--font-body)}
+.tl p{color:var(--color-text-muted);font-size:var(--text-sm);margin-top:var(--space-1)}
+@media(min-width:800px){.tl li{grid-template-columns:7rem 1fr;align-items:start;gap:var(--space-6)}.tl .y{padding-top:.15rem}}
+/* projects */
+.proj{display:grid;gap:var(--space-4);grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr))}
+.meta{display:flex;flex-wrap:wrap;gap:var(--space-3);font-size:var(--text-xs);color:var(--color-text-faint)}
+/* orgs */
+.orgs{display:grid;gap:var(--space-3)}
+.org{display:grid;gap:var(--space-1) var(--space-4);padding:var(--space-4) 0;border-bottom:1px solid oklch(from var(--color-text) l c h/.12)}
+.org:first-child{border-top:1px solid oklch(from var(--color-text) l c h/.12)}
+.org .k{font-size:var(--text-xs);color:var(--color-text-faint);font-variant-numeric:tabular-nums}
+.org h3{font-size:var(--text-base);font-family:var(--font-body);font-weight:700}
+.org p{font-size:var(--text-sm);color:var(--color-text-muted)}
+@media(min-width:800px){.org{grid-template-columns:7rem 14rem 1fr;align-items:baseline}}
+/* stack */
+.two{display:grid;gap:var(--space-10)}
+@media(min-width:800px){.two{grid-template-columns:1fr 1fr}}
+.langs{list-style:none;display:grid;gap:var(--space-3)}
+.langs li{display:grid;grid-template-columns:6.5rem 1fr 2.5rem;align-items:center;gap:var(--space-3);font-size:var(--text-sm)}
+.langs .bar{height:10px;border-radius:var(--radius-full);background:oklch(from var(--color-text) l c h/.08);overflow:hidden;display:block}
+.langs .bar i{display:block;height:100%;background:var(--color-primary);border-radius:var(--radius-full);width:var(--w);transform-origin:left;transition:transform .8s cubic-bezier(.16,1,.3,1)}
+.langs .n{text-align:right;color:var(--color-text-faint);font-variant-numeric:tabular-nums}
+.stack h3{font-size:var(--text-sm);letter-spacing:.08em;text-transform:uppercase;color:var(--color-text-faint);font-weight:700;margin-bottom:var(--space-2);margin-top:var(--space-5)}
+.stack h3:first-child{margin-top:0}
+.stack p{font-size:var(--text-sm);color:var(--color-text-muted)}
+/* misc */
+.misc{list-style:none;display:grid;gap:var(--space-3);grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr))}
+.misc li{font-size:var(--text-sm);color:var(--color-text-muted);padding:var(--space-4);border:1px solid oklch(from var(--color-text) l c h/.1);border-radius:var(--radius-md);background:var(--color-surface)}
+.misc b{color:var(--color-text);font-weight:700;display:block;margin-bottom:var(--space-1)}
+/* contact */
 .contact{padding-block:clamp(var(--space-16),9vw,var(--space-24))}
 .contact h2{font-size:var(--text-2xl);max-width:16ch}
 .contact p{margin-top:var(--space-4);color:var(--color-text-muted)}
 footer{padding-block:var(--space-8);border-top:1px solid oklch(from var(--color-text) l c h/.1);font-size:var(--text-xs);color:var(--color-text-faint)}
 footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:var(--space-2)}
-@media(max-width:640px){nav a.hide-m{display:none}}
+footer a{text-decoration:none}
+@media(max-width:700px){nav a.hide-m{display:none}}
 .reveal{opacity:0;transform:translateY(12px);transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1)}
 .reveal.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}html{scroll-behavior:auto}}
@@ -116,9 +134,10 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:var(-
 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="1" y="1" width="30" height="30" rx="6" stroke="currentColor" stroke-width="2"/><path d="M8 22l4-12 4 12M9.5 18h5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="22" cy="13.5" r="2.5" stroke="var(--color-primary)" stroke-width="2"/><circle cx="22" cy="20" r="3" stroke="var(--color-primary)" stroke-width="2"/></svg>
 <span>a8.baby</span></a>
 <nav aria-label="主导航">
-<a class="hide-m" href="#capability">能力</a>
-<a class="hide-m" href="#work">项目</a>
-<a class="hide-m" href="#ai">AI 结算</a>
+<a class="hide-m" href="#now">现在</a>
+<a class="hide-m" href="#timeline">经历</a>
+<a class="hide-m" href="#open">开源</a>
+<a class="hide-m" href="#teams">团队</a>
 <a href="#contact">联系</a>
 <button class="icon-btn" data-theme-toggle aria-label="切换深色模式"></button>
 </nav>
@@ -127,114 +146,159 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:var(-
 
 <main id="main">
 <div class="wrap hero" id="top">
-<p class="eyebrow">钱包 · 风控 · 做市 · 清结算</p>
-<h1>把交易系统，从“能演示”做到“能运营”。</h1>
-<p class="lead">我做过交易所级别的钱包、风控与做市系统，现在为香港、新加坡及远程团队提供技术合伙与架构落地。</p>
+<p class="eyebrow">hellojun · GitHub 2013 年至今</p>
+<h1>你好，我是 Jun。一个一直在写代码的人。</h1>
+<p class="lead">从 USDT 钱包和交易所基础设施做起，做过 NFT 和应用链，在 Cosmos 黑客松拿过第一。这两年大部分时间花在 AI Agent 与链上系统的交叉点上：让 Agent 自己下注、对战、结算，也让 AI 来分析盘口和做市风险。</p>
 <div class="cta">
-<a class="btn btn-primary" href="https://t.me/Jun0bj" target="_blank" rel="noopener noreferrer">Telegram 预约 30 分钟诊断</a>
-<a class="btn btn-ghost" href="#work">看项目</a>
+<a class="btn btn-primary" href="https://github.com/hellojun" target="_blank" rel="noopener noreferrer">GitHub @hellojun</a>
+<a class="btn btn-ghost" href="#timeline">看看这些年做了什么</a>
 </div>
-<div class="stats"><span>可远程</span><span>可驻新加坡 / 香港</span><span>可带 2–5 人交付小队</span></div>
+<div class="stats"><span><b>200+</b> 个仓库</span><span><b>14</b> 个组织</span><span>主要写 <b>Go · Python · TypeScript</b></span></div>
 </div>
 
-<section class="alt" id="capability">
+<section class="alt" id="now">
 <div class="wrap">
-<div class="sec-head reveal"><h2>能做什么</h2><p>只做和资金流直接相关的核心系统。</p></div>
-<div class="rows">
-<div class="row reveal"><span class="n">01</span><h3>钱包系统</h3><p>多链充提、热冷钱包分层、归集与签名流程、余额对账。</p></div>
-<div class="row reveal"><span class="n">02</span><h3>风控</h3><p>出入金规则、异常交易识别、限额与审批、告警与处置流程。</p></div>
-<div class="row reveal"><span class="n">03</span><h3>做市与交易</h3><p>报价与库存管理、对冲与风险敞口监控、交易链路稳定性。</p></div>
-<div class="row reveal"><span class="n">04</span><h3>清结算与账户</h3><p>账务模型、资金调度、日终对账、稳定币支付与结算。</p></div>
+<div class="sec-head reveal"><h2>现在在做</h2><p>2026 年提交最多的几件事。</p></div>
+<div class="now">
+<article class="card reveal">
+<p><span class="tag">AI Agent</span><span class="tag">预测市场</span><span class="tag dim">Python · Vue</span></p>
+<h3>PolySport</h3>
+<p>多智能体辩论的体育预测引擎：7 个带不同认知偏差的 AI 分析师辩论 3 轮，结合 Zep 知识图谱和 Polymarket 链上聪明钱，给出胜负、让分、总分的预测。</p>
+<a class="more" href="https://github.com/hellojun/PolySport" target="_blank" rel="noopener noreferrer">github.com/hellojun/PolySport →</a>
+</article>
+<article class="card reveal">
+<p><span class="tag">Agent 协议</span><span class="tag">Base · USDC</span><span class="tag dim">TypeScript</span></p>
+<h3>Bout — Open Agent Gaming Protocol</h3>
+<p>给 AI Agent 用的开放对战协议：任何 Agent 读一份 Skill 文件就能注册、下注、对战、结算，用 x402 走 HTTP 付款，协议本身不托管私钥。游戏开发者提交新玩法可长期分成。</p>
+<a class="more" href="https://github.com/hellojun/bout.network" target="_blank" rel="noopener noreferrer">github.com/hellojun/bout.network →</a>
+</article>
+<article class="card reveal">
+<p><span class="tag">Chrome 扩展</span><span class="tag">DeFi</span><span class="tag dim">TypeScript · Solidity</span></p>
+<h3>KPAX Ball</h3>
+<p>在 Polymarket 看足球盘口时自动识别比赛，侧边栏给出多专家辩论式分析；另一条线是拿 Polymarket 仓位抵押借 USDC，AI 给建议 LTV，开赛前自动平仓。</p>
+<a class="more" href="https://github.com/hellojun/kpax-ball" target="_blank" rel="noopener noreferrer">github.com/hellojun/kpax-ball →</a>
+</article>
+<article class="card reveal">
+<p><span class="tag">机密 EVM</span><span class="tag">Oasis</span><span class="tag dim">Go · Rust</span></p>
+<h3>OXN 测试网</h3>
+<p>基于 Oasis 的机密 EVM 测试链：Solidity 合约直接复用，交易 calldata 和 view 调用默认加密。我负责开发者文档和链周边（浏览器、钱包、水龙头）的整合。</p>
+<a class="more" href="https://github.com/zkpChain/oxn-docs" target="_blank" rel="noopener noreferrer">github.com/zkpChain/oxn-docs →</a>
+</article>
+<article class="card reveal">
+<p><span class="tag">做市 · 量化</span><span class="tag dim">Go · Python</span></p>
+<h3>做市与多因子系统</h3>
+<p>一套 Go 写的做市机器人集群（报价、对冲、套利、自成交、风控、告警），以及一套 Python 多因子回测与执行系统的集成。团队项目，我负责整体和集成。</p>
+</article>
+<article class="card reveal">
+<p><span class="tag">可信存证</span><span class="tag dim">NestJS · Hardhat</span></p>
+<h3>园区区块链存证服务</h3>
+<p>园区各业务系统通过统一上链网关把数据哈希与关键要素上链，可出具存证证书，供银行与法院独立核验。</p>
+</article>
 </div>
 </div>
 </section>
 
-<section id="work">
+<section id="timeline">
 <div class="wrap">
-<div class="sec-head reveal"><h2>项目</h2><p>以下为部分可公开的项目与工具，私有项目仅展示功能介绍。</p></div>
+<div class="sec-head reveal"><h2>这些年的路</h2><p>按 GitHub 上的提交和仓库整理，大致是这样走过来的。</p></div>
+<ol class="tl">
+<li class="reveal"><span class="y">2019</span><div><h3>从钱包开始</h3><p>写了第一个公开项目 usdt_wallet，给 EOS token 列表提过 PR。那时候就对「钱怎么在链上安全地动」感兴趣。</p></div></li>
+<li class="reveal"><span class="y">2020</span><div><h3>做了一阵传统业务</h3><p>给一家摄影品牌做微信 Native 支付和智能影棚系统。</p></div></li>
+<li class="reveal"><span class="y">2021–2022</span><div><h3>NFT 与游戏</h3><p>参与 1Box NFT 平台、Xoasis NFT 市场（含给 Unreal Engine 用的以太坊钱包 SDK）和 gamelink 链游项目。</p></div></li>
+<li class="reveal"><span class="y">2022–2023</span><div><h3>交易所级钱包系统</h3><p>发起 ex-wallet：Go 写的完整钱包后端，含充提、签名服务、风控服务、MPC 与 KMS、BTC/ETH/BSC/TRON/XRP 节点接入、运营后台。官网和部分后台 API 是我自己写的。</p></div></li>
+<li class="reveal"><span class="y">2023</span><div><h3>应用链与 DeFi</h3><p>用 Cosmos SDK 做了游戏应用链 gchain，拿到 Cosmos 香港加速器中文开发培训第 2 期黑客松第一名。同期发起 GreatGainGo，做预言机合约与节点。</p></div></li>
+<li class="reveal"><span class="y">2023 末–2024</span><div><h3>铭文那一波</h3><p>写了 Celestia、IoTeX、Cosmos 的铭文工具，发起 CelestLoan 和铭文市场项目。还写了个每秒盯币安上币公告、自动在 OKX 开多的小工具，意外成了我星星最多的仓库。</p></div></li>
+<li class="reveal"><span class="y">2024 末–2025</span><div><h3>Meme 交易与 AI 入门</h3><p>发起 memes-ai：微服务架构的多链 Meme 币交易平台（ETH/BSC/Base/Solana/Tron，带 MEV 保护），前端一部分是我写的。同时写 Solana 节点服务、交易助手 TradeGPT，以及两个德州扑克 AI（一个用 LangChain，一个用 Claude API）。</p></div></li>
+<li class="reveal"><span class="y">2025 末</span><div><h3>AIxC</h3><p>发起 AIxC-Tech：Web3 Hub（钱包登录、C10 指数预测游戏、任务与排行榜）、Agent 竞技场 agentir、机器人租赁平台 roboshare（Stripe 分账）。参与基于 Google ADK 的多 Agent 体育问答系统。</p></div></li>
+<li class="reveal"><span class="y">2026</span><div><h3>Agent × 链</h3><p>PolySport、Bout 协议、KPAX Ball、OXN 机密 EVM 测试网、园区存证 BaaS，以及做市与多因子量化系统。还写了一个把 Lark 告警交给本地 Codex 结合 SSH 日志做分析的小服务。</p></div></li>
+</ol>
+</div>
+</section>
+
+<section class="alt" id="open">
+<div class="wrap">
+<div class="sec-head reveal"><h2>公开仓库</h2><p>可以直接看代码的几个。</p></div>
 <div class="proj">
-<article class="card feature reveal">
-<div>
-<p><span class="tag">钱包</span><span class="tag">Vue</span><span class="tag">私有</span></p>
-<h3>exwallet 钱包管理后台</h3>
-<p>钱包业务的运营后台。<span class="todo">【待补充：功能说明与你负责的部分】</span></p>
-</div>
-<div class="shot" role="img" aria-label="截图占位">截图占位<br>（请遮盖地址与用户数据）</div>
-</article>
-<article class="card reveal">
-<p><span class="tag">钱包</span><span class="tag">JavaScript</span><span class="tag">公开</span></p>
-<h3>usdt_wallet</h3>
-<p>USDT 钱包实现，GitHub 公开项目。</p>
-<a class="more" href="https://github.com/hellojun/usdt_wallet" target="_blank" rel="noopener noreferrer">查看仓库 →</a>
-</article>
-<article class="card reveal">
-<p><span class="tag">链上基础设施</span><span class="tag">Go</span><span class="tag">私有</span></p>
-<h3>Solana / TRON 节点服务</h3>
-<p>用 Go 编写的链节点服务，配套公共库与协议定义。</p>
-</article>
-<article class="card reveal">
-<p><span class="tag">监控</span><span class="tag">TypeScript</span><span class="tag">公开</span></p>
-<h3>币安上币公告监听</h3>
-<p>实时监听交易所上币公告，已获 7 星、13 次 fork。</p>
-<a class="more" href="https://github.com/hellojun/binance-announments" target="_blank" rel="noopener noreferrer">查看仓库 →</a>
-</article>
-<article class="card reveal">
-<p><span class="tag">AI 运维</span><span class="tag">Python</span><span class="tag">私有</span></p>
-<h3>Lark 告警分析 Agent</h3>
-<p>独立服务：接收 Lark 告警，调用本地 Codex CLI 并结合 SSH 日志做故障分析。</p>
-</article>
-<article class="card reveal">
-<p><span class="tag">交易 AI</span><span class="tag">Python</span><span class="tag">私有</span></p>
-<h3>voox-tradegpt</h3>
-<p><span class="todo">【待补充：项目介绍】</span></p>
-</article>
-<article class="card reveal">
-<p><span class="tag">应用链</span><span class="tag">Cosmos SDK</span><span class="tag">公开</span></p>
-<h3>gchain 游戏应用链</h3>
-<p>基于 Cosmos SDK 开发的游戏应用链。</p>
-<a class="more" href="https://github.com/hellojun/gchain" target="_blank" rel="noopener noreferrer">查看仓库 →</a>
-</article>
+<article class="card reveal"><p><span class="tag dim">Python · Vue</span></p><h3>PolySport</h3><p>多智能体辩论 × 知识图谱 × 链上聪明钱的体育预测引擎。</p><a class="more" href="https://github.com/hellojun/PolySport" target="_blank" rel="noopener noreferrer">查看仓库 →</a></article>
+<article class="card reveal"><p><span class="tag dim">TypeScript</span></p><h3>bout.network</h3><p>Open Agent Gaming Protocol。Hono + Next.js + Drizzle 的 monorepo，合约为 USDC 托管与结算。</p><a class="more" href="https://github.com/hellojun/bout.network" target="_blank" rel="noopener noreferrer">查看仓库 →</a></article>
+<article class="card reveal"><p><span class="tag dim">TypeScript</span></p><h3>bout-game-gomoku</h3><p>Bout 协议外部游戏服务器的参考实现：实现 IGame，包一层 HTTP，注册到协议。</p><a class="more" href="https://github.com/hellojun/bout-game-gomoku" target="_blank" rel="noopener noreferrer">查看仓库 →</a></article>
+<article class="card reveal"><p><span class="tag dim">TypeScript · Python · Solidity</span></p><h3>kpax-ball</h3><p>Polymarket 足球盘口 AI 分析扩展，带仓位抵押借贷合约（Foundry，UUPS 可升级）。</p><a class="more" href="https://github.com/hellojun/kpax-ball" target="_blank" rel="noopener noreferrer">查看仓库 →</a></article>
+<article class="card reveal"><p><span class="tag dim">TypeScript</span><span class="tag">7 ★ · 13 fork</span></p><h3>binance-announments</h3><p>每秒拉取币安公告，识别永续合约上新，自动在 OKX 下多单。</p><a class="more" href="https://github.com/hellojun/binance-announments" target="_blank" rel="noopener noreferrer">查看仓库 →</a></article>
+<article class="card reveal"><p><span class="tag dim">Go · Cosmos SDK</span><span class="tag">黑客松第一</span></p><h3>gchain</h3><p>Cosmos SDK 游戏应用链，CHA 中文开发培训第 2 期黑客松第一名。</p><a class="more" href="https://github.com/hellojun/gchain" target="_blank" rel="noopener noreferrer">查看仓库 →</a></article>
+<article class="card reveal"><p><span class="tag dim">JavaScript</span></p><h3>oxn-docs</h3><p>OXN 机密 EVM 测试网的开发者文档站（Docusaurus）与 DApp 示例。</p><a class="more" href="https://github.com/zkpChain/oxn-docs" target="_blank" rel="noopener noreferrer">查看仓库 →</a></article>
+<article class="card reveal"><p><span class="tag dim">JavaScript</span></p><h3>usdt_wallet</h3><p>2019 年的 USDT 钱包，一切的起点。</p><a class="more" href="https://github.com/hellojun/usdt_wallet" target="_blank" rel="noopener noreferrer">查看仓库 →</a></article>
 </div>
 </div>
 </section>
 
-<section class="alt" id="cases">
+<section id="teams">
 <div class="wrap">
-<div class="sec-head reveal"><h2>匿名案例</h2><p>客户信息保密，只披露规模、角色与结果。</p></div>
-<div class="cases">
-<article class="case reveal"><h3>案例 A · 钱包</h3><dl><dt>规模</dt><dd class="todo">【待补充】</dd><dt>角色</dt><dd class="todo">【待补充】</dd><dt>结果</dt><dd class="todo">【待补充】</dd></dl></article>
-<article class="case reveal"><h3>案例 B · 风控</h3><dl><dt>规模</dt><dd class="todo">【待补充】</dd><dt>角色</dt><dd class="todo">【待补充】</dd><dt>结果</dt><dd class="todo">【待补充】</dd></dl></article>
-<article class="case reveal"><h3>案例 C · 做市</h3><dl><dt>规模</dt><dd class="todo">【待补充】</dd><dt>角色</dt><dd class="todo">【待补充】</dd><dt>结果</dt><dd class="todo">【待补充】</dd></dl></article>
+<div class="sec-head reveal"><h2>团队项目</h2><p>我发起或参与的组织，代码大多是团队一起写的，这里只说做了什么。</p></div>
+<div class="orgs">
+<div class="org reveal"><span class="k">2022–2023</span><h3>ex-wallet</h3><p>交易所级钱包后端全家桶：钱包、签名、风控、MPC/KMS、多链节点、运营后台。Go 为主。</p></div>
+<div class="org reveal"><span class="k">2024–2026</span><h3>memes-ai</h3><p>多链 Meme 币交易平台：市价/限价/止盈止损、WebSocket 行情、MEV 保护、多级佣金。</p></div>
+<div class="org reveal"><span class="k">2025–2026</span><h3>AIxC-Tech</h3><p>Web3 Hub 与预测游戏、Agent 竞技场、机器人租赁平台 roboshare、Robothon 活动站。</p></div>
+<div class="org reveal"><span class="k">2026</span><h3>zkpChain</h3><p>OXN 机密 EVM 测试网：核心链、Sapphire paratime、Web3 网关、浏览器、钱包、水龙头、文档。</p></div>
+<div class="org reveal"><span class="k">2026</span><h3>AlphaMatrix-M · bestrade</h3><p>做市机器人集群（Go）与多因子量化系统（Python）的整合与部署。</p></div>
+<div class="org reveal"><span class="k">2023</span><h3>GreatGainGo</h3><p>预言机合约、预言机节点与脚本、前后端。</p></div>
+<div class="org reveal"><span class="k">2023–2024</span><h3>CelestLoan · InscriptionProject</h3><p>Celestia 生态的借贷与铭文市场。</p></div>
+<div class="org reveal"><span class="k">2021–2022</span><h3>1BoxNFTs · X-oasis · gamelink</h3><p>NFT 平台与市场、Unreal Engine 钱包 SDK、链游。</p></div>
 </div>
 </div>
 </section>
 
-<section id="ai">
+<section class="alt" id="stack">
 <div class="wrap two">
 <div class="reveal">
-<div class="sec-head"><h2>下一步：AI 调用的计费与结算</h2></div>
-<p style="color:var(--color-text-muted)">AI 推理和 Agent 调用越来越多，计量、路由、结算和收益分配会成为新的基础设施。我把交易系统里的账务与风控经验，迁移到这一层。</p>
+<div class="sec-head"><h2>常用的东西</h2><p>按个人与组织仓库的主语言统计。</p></div>
+<ul class="langs" aria-label="仓库主语言分布">
+<li><span>Go</span><span class="bar"><i style="--w:100%"></i></span><span class="n">47</span></li>
+<li><span>Python</span><span class="bar"><i style="--w:81%"></i></span><span class="n">38</span></li>
+<li><span>TypeScript</span><span class="bar"><i style="--w:68%"></i></span><span class="n">32</span></li>
+<li><span>JavaScript</span><span class="bar"><i style="--w:53%"></i></span><span class="n">25</span></li>
+<li><span>Vue</span><span class="bar"><i style="--w:32%"></i></span><span class="n">15</span></li>
+<li><span>Solidity</span><span class="bar"><i style="--w:19%"></i></span><span class="n">9</span></li>
+<li><span>Java</span><span class="bar"><i style="--w:15%"></i></span><span class="n">7</span></li>
+<li><span>Rust</span><span class="bar"><i style="--w:6%"></i></span><span class="n">3</span></li>
+</ul>
 </div>
-<ol class="flow reveal" aria-label="流程">
-<li>调用方发起推理请求</li>
-<li>按成本、质量、延迟路由到服务方</li>
-<li>返回结果并生成可计量回执</li>
-<li>结算层完成扣费与收益分发</li>
-<li>控制台展示调用量、成本、失败率</li>
-</ol>
+<div class="stack reveal">
+<h3>链</h3><p>Bitcoin · Ethereum · BSC · Base · Solana · Tron · Sui · Cosmos SDK · Celestia · Oasis</p>
+<h3>合约与钱包</h3><p>Solidity · Foundry · Hardhat · viem · MPC · KMS · 多链签名与归集</p>
+<h3>后端</h3><p>Go · FastAPI · NestJS · Hono · Fastify · PostgreSQL · MySQL · Redis · BullMQ · Docker</p>
+<h3>前端</h3><p>React · Next.js · Vue 3 · Vite · Tailwind · Chrome 扩展（MV3）</p>
+<h3>AI</h3><p>Claude · Gemini · DeepSeek · LangChain · Google ADK · Zep GraphRAG · 多 Agent 编排</p>
+</div>
+</div>
+</section>
+
+<section id="misc">
+<div class="wrap">
+<div class="sec-head reveal"><h2>还折腾过</h2><p>一些不成体系但挺好玩的东西。</p></div>
+<ul class="misc">
+<li class="reveal"><b>德州扑克 AI</b>一个用 LangChain 和扑克文档知识库算 EV 的分析 Agent，一个用 Claude API 的策略教练。</li>
+<li class="reveal"><b>Lark 告警分析 Agent</b>群里出现告警，自动 SSH 取日志片段，交给本地 Codex 结合源码分析，再回复到原消息。</li>
+<li class="reveal"><b>TradeGPT 风格的交易助手</b>FastAPI + React 的聊天式行情分析。</li>
+<li class="reveal"><b>StoryForge</b>小说、视频、照片的协作创作平台，Next.js + Fastify + MongoDB。</li>
+<li class="reveal"><b>各种链上脚本</b>空投、余额查询、归集、MEV 实验，Sui、Walrus、Lava、Tron 都碰过。</li>
+<li class="reveal"><b>2020 年的摄影品牌系统</b>微信 Native 支付和智能影棚。</li>
+</ul>
 </div>
 </section>
 
 <section class="alt contact" id="contact">
 <div class="wrap">
-<h2>有一块最难的系统，需要补上？</h2>
-<p>说说你的项目现状和卡点，30 分钟内给你一个明确的判断。</p>
-<div class="cta"><a class="btn btn-primary" href="https://t.me/Jun0bj" target="_blank" rel="noopener noreferrer">Telegram @Jun0bj</a></div>
+<h2>想聊聊？</h2>
+<p>代码在 GitHub，人在 Telegram。</p>
+<div class="cta">
+<a class="btn btn-primary" href="https://github.com/hellojun" target="_blank" rel="noopener noreferrer">GitHub @hellojun</a>
+<a class="btn btn-ghost" href="https://t.me/Jun0bj" target="_blank" rel="noopener noreferrer">Telegram @Jun0bj</a>
+</div>
 </div>
 </section>
 </main>
 
-<footer><div class="wrap"><span>© 2026 a8.baby</span><span>香港 · 新加坡 · 远程</span></div></footer>
+<footer><div class="wrap"><span>© 2026 a8.baby</span><span>内容整理自 <a href="https://github.com/hellojun" target="_blank" rel="noopener noreferrer">GitHub</a> · 香港 · 新加坡</span></div></footer>
 
 <script>
 (function(){
