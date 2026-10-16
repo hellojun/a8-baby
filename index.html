@@ -4,7 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Jun — a8.baby</title>
-<meta name="description" content="Jun 的个人主页。从钱包和交易所基础设施做起，做过应用链与 NFT，这两年在 AI Agent 与链上系统的交叉点上，正在做 LLMChain：把推理调用变成可验证收据的公链。">
+<meta name="description" content="Jun 的个人主页。多年交易所钱包、做市与风控系统经验，近两年关注 AI 与 Crypto 的结合，当前方向是 LLMChain。">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<meta property="og:title" content="Jun — a8.baby">
+<meta property="og:image" content="https://a8.baby/avatar.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
@@ -47,7 +52,8 @@ a,button{transition:color var(--transition-interactive),background var(--transit
 .wrap{max-width:var(--content-wide);margin-inline:auto;padding-inline:clamp(var(--space-4),4vw,var(--space-8))}
 header{position:sticky;top:0;z-index:50;background:color-mix(in oklab,var(--color-bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid oklch(from var(--color-text) l c h/.1)}
 .bar{display:flex;align-items:center;justify-content:space-between;height:64px;gap:var(--space-4)}
-.brand{display:flex;align-items:center;gap:var(--space-2);text-decoration:none;font-weight:700;color:var(--color-text)}
+.brand{display:flex;align-items:center;gap:var(--space-3);text-decoration:none;font-weight:700;color:var(--color-text)}
+.brand .avatar{width:32px;height:32px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 1px oklch(from var(--color-text) l c h/.15)}
 nav{display:flex;align-items:center;gap:var(--space-5)}
 nav a{font-size:var(--text-sm);text-decoration:none;color:var(--color-text-muted)}
 nav a:hover{color:var(--color-text)}
@@ -61,7 +67,8 @@ nav a:hover{color:var(--color-text)}
 .btn:active{transform:translateY(1px)}
 .hero{padding-block:clamp(var(--space-16),12vw,var(--space-24)) clamp(var(--space-12),8vw,var(--space-20))}
 .eyebrow{font-size:var(--text-xs);letter-spacing:.14em;text-transform:uppercase;color:var(--color-primary);font-weight:700;margin-bottom:var(--space-6)}
-h1{font-family:var(--font-display);font-size:var(--text-2xl);font-weight:700;max-width:18ch;letter-spacing:-.01em}
+h1{font-family:var(--font-display);font-size:min(var(--text-2xl),5vw);font-weight:700;max-width:none;white-space:nowrap;letter-spacing:-.01em}
+@media(max-width:480px){h1{font-size:var(--text-xl);white-space:normal}}
 .hero p.lead{margin-top:var(--space-6);font-size:var(--text-lg);color:var(--color-text-muted);max-width:44ch;line-height:1.6}
 .cta{display:flex;flex-wrap:wrap;gap:var(--space-3);margin-top:var(--space-8)}
 .stats{display:flex;flex-wrap:wrap;gap:var(--space-3) var(--space-8);margin-top:var(--space-12);padding-top:var(--space-6);border-top:1px solid oklch(from var(--color-text) l c h/.1);font-size:var(--text-sm);color:var(--color-text-muted)}
@@ -74,18 +81,22 @@ h2{font-family:var(--font-display);font-size:var(--text-xl);font-weight:700}
 .tag{display:inline-block;font-size:var(--text-xs);padding:2px var(--space-3);border-radius:var(--radius-full);background:var(--color-primary-highlight);color:var(--color-primary);font-weight:500;margin-right:var(--space-1);margin-bottom:var(--space-1)}
 .tag.dim{background:oklch(from var(--color-text) l c h/.08);color:var(--color-text-muted)}
 /* feature */
-.feat{margin-top:var(--space-12);padding:clamp(var(--space-6),4vw,var(--space-10));border:1px solid color-mix(in oklab,var(--color-primary) 35%,transparent);border-left:4px solid var(--color-primary);border-radius:var(--radius-lg);background:var(--color-surface);box-shadow:var(--shadow-md);display:grid;gap:var(--space-4)}
+.feat{margin-bottom:var(--space-10);padding:clamp(var(--space-6),4vw,var(--space-10));border:1px solid color-mix(in oklab,var(--color-primary) 35%,transparent);border-left:4px solid var(--color-primary);border-radius:var(--radius-lg);background:var(--color-surface);box-shadow:var(--shadow-md);display:grid;gap:var(--space-4)}
 .feat-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--space-2)}
 .feat-date{font-size:var(--text-xs);color:var(--color-text-faint)}
 .feat h2{font-size:var(--text-xl)}
 .feat-lead{color:var(--color-text-muted);max-width:60ch}
-.feat-points{list-style:none;display:grid;gap:var(--space-3);grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));font-size:var(--text-sm);color:var(--color-text-muted)}
+.feat-points{list-style:none;display:grid;gap:var(--space-3);grid-template-columns:1fr;font-size:var(--text-sm);color:var(--color-text-muted)}
+@media(min-width:700px){.feat-points{grid-template-columns:1fr 1fr}}
 .feat-points li{padding:var(--space-3) var(--space-4);border-radius:var(--radius-md);background:var(--color-surface-offset)}
 .feat-points b{display:block;color:var(--color-text);margin-bottom:2px}
 .feat-call{font-size:var(--text-sm);color:var(--color-text-muted);max-width:64ch}
 .feat .cta{margin-top:var(--space-2)}
 /* now */
-.now{display:grid;gap:var(--space-4);grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr))}
+.sub{font-family:var(--font-body);font-size:var(--text-base);font-weight:700;color:var(--color-text-muted);margin-bottom:var(--space-4)}
+
+.now{display:grid;gap:var(--space-4);grid-template-columns:1fr}
+@media(min-width:700px){.now{grid-template-columns:1fr 1fr}}
 .card{background:var(--color-surface);border:1px solid oklch(from var(--color-text) l c h/.1);border-radius:var(--radius-lg);padding:var(--space-6);box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:var(--space-3)}
 .card h3{font-size:var(--text-lg);font-family:var(--font-body)}
 .card p{color:var(--color-text-muted);font-size:var(--text-sm)}
@@ -142,14 +153,13 @@ footer a{text-decoration:none}
 <header>
 <div class="wrap bar">
 <a class="brand" href="#top" aria-label="a8.baby 首页">
-<svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="1" y="1" width="30" height="30" rx="6" stroke="currentColor" stroke-width="2"/><path d="M8 22l4-12 4 12M9.5 18h5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="22" cy="13.5" r="2.5" stroke="var(--color-primary)" stroke-width="2"/><circle cx="22" cy="20" r="3" stroke="var(--color-primary)" stroke-width="2"/></svg>
+<img class="avatar" src="avatar.jpg" width="32" height="32" alt="">
 <span>a8.baby</span></a>
 <nav aria-label="主导航">
 <a class="hide-m" href="#feat-h">LLMChain</a>
 <a class="hide-m" href="#now">现在</a>
 <a class="hide-m" href="#timeline">经历</a>
 <a class="hide-m" href="#open">开源</a>
-<a class="hide-m" href="#teams">团队</a>
 <a href="#contact">联系</a>
 <button class="icon-btn" data-theme-toggle aria-label="切换深色模式"></button>
 </nav>
@@ -159,34 +169,35 @@ footer a{text-decoration:none}
 <main id="main">
 <div class="wrap hero" id="top">
 <p class="eyebrow">hellojun · GitHub 2013 年至今</p>
-<h1>你好，我是 Jun。一个一直在写代码的人。</h1>
-<p class="lead">从 USDT 钱包和交易所基础设施做起，做过 NFT 和应用链，在 Cosmos 黑客松拿过第一。这两年大部分时间花在 AI Agent 与链上系统的交叉点上：让 Agent 自己下注、对战、结算，也让 AI 来分析盘口和做市风险。现在想做的，是给 Agent 之间的推理调用开一张可验证的发票。</p>
+<h1>我是 Jun，一个一直在写代码的人。</h1>
+<p class="lead">多年交易所钱包、做市与风控系统经验。近两年关注 AI 与 Crypto 的结合，做过 Agent 自主下注、对战与结算，以及 AI 参与盘口分析的尝试。当前方向是 LLMChain：聚合闲置的大模型算力上链供 Agent 调用，并为每次调用生成可验证凭证。</p>
 <div class="cta">
 <a class="btn btn-primary" href="https://github.com/hellojun" target="_blank" rel="noopener noreferrer">GitHub @hellojun</a>
 <a class="btn btn-ghost" href="#timeline">看看这些年做了什么</a>
 </div>
-<aside class="feat reveal in" aria-labelledby="feat-h">
-<div class="feat-head"><span class="tag">新项目 · 欢迎参与</span><span class="feat-date">2026 年 10 月</span></div>
-<h2 id="feat-h">LLMChain：给 Agent 经济开发票的链</h2>
-<p class="feat-lead">人类交易靠发票，Agent 交易靠什么？一天成千上万次推理调用，没有任何凭证能证明它真的发生过、用的是声明的模型、价格是约定的价格。LLMChain 是一条把每次推理调用变成可验证收据（VSR）并原生结算的独立公链。</p>
-<ul class="feat-points">
-<li><b>收据即结算</b>每一次完成的推理调用生成一张 VSR 收据，收据是唯一上链的对象。</li>
-<li><b>毫秒级调用</b>选服务商、付款、执行都在链下，只有结算上链，不等区块确认。</li>
-<li><b>造假不划算</b>隐蔽挑战、分级保真证明、质押罚没，以次充好在经济上亏本。</li>
-<li><b>补上缺的半段</b>x402 解决怎么付钱，ERC-8004 解决 Agent 是谁，LLMChain 解决调用是否真实、多方如何结清。</li>
-</ul>
-<p class="feat-call">基金会做链，社区做生态。白皮书 v1.1 刚放出来，还有不少【待定】。如果你对可验证推理、支付通道、TEE 或 zkML 有想法，欢迎来提 issue、挑毛病、一起把它做出来。</p>
-<div class="cta">
-<a class="btn btn-primary" href="https://github.com/hellojun/OpenLLM" target="_blank" rel="noopener noreferrer">GitHub · hellojun/OpenLLM</a>
-<a class="btn btn-ghost" href="https://github.com/hellojun/OpenLLM/blob/main/LLMChain-Whitepaper-v1.1-20261012.pdf" target="_blank" rel="noopener noreferrer">读白皮书（PDF）</a>
-</div>
-</aside>
 <div class="stats"><span><b>200+</b> 个仓库</span><span><b>14</b> 个组织</span><span>主要写 <b>Go · Python · TypeScript</b></span></div>
 </div>
 
 <section class="alt" id="now">
 <div class="wrap">
-<div class="sec-head reveal"><h2>现在在做</h2><p>2026 年提交最多的几件事。</p></div>
+<div class="sec-head reveal"><h2>现在在做</h2></div>
+<aside class="feat reveal in" aria-labelledby="feat-h">
+<div class="feat-head"><span class="tag">新项目 · 欢迎参与</span><span class="feat-date">2026 年 10 月</span></div>
+<h2 id="feat-h">LLMChain：把闲散的大模型聚到链上，给 Agent 用</h2>
+<p class="feat-lead">世界上有大量闲着的 GPU 和自己托管的开源模型，也有越来越多的 Agent 一天要发起成千上万次推理调用。LLMChain 是一条独立公链，把这两头接起来：谁有模型谁就能上链挂单，Agent 按模型、价格、证明等级直接挑选并付款，每一次调用都生成一张可验证的收据（VSR），收据即结算。人类交易靠发票，Agent 交易靠 VSR。</p>
+<ul class="feat-points">
+<li><b>供给：闲散模型上链</b>普通 GPU 自托管开源权重即可挂单，无需许可；链上挂单簿持久有效，写明模型、单价、容量和证明等级。</li>
+<li><b>需求：Agent 直连，毫秒级</b>Agent 查挂单簿选服务商，用 x402 开支付通道，链下当场接单执行，不等区块确认，只有结算上链。</li>
+<li><b>凭证：收据即结算</b>每一次完成的推理调用生成一张 VSR 收据，它是唯一上链的对象，资金按收据结算，没有平台托管。</li>
+<li><b>信任：造假不划算</b>隐蔽挑战、分级保真证明、质押罚没，让挂旗舰模型却偷换小模型这种事在经济上亏本。</li>
+</ul>
+<p class="feat-call">基金会只做足够薄的验证与结算底座，分账、路由这些生态逻辑交给社区在合约层演进。白皮书 v1.1 刚放出来，还有不少【待定】。如果你手里有闲着的 GPU，或者对可验证推理、支付通道、TEE、zkML 有想法，欢迎来提 issue、挑毛病、一起把它做出来。</p>
+<div class="cta">
+<a class="btn btn-primary" href="https://github.com/hellojun/LLMChain" target="_blank" rel="noopener noreferrer">GitHub · hellojun/LLMChain</a>
+<a class="btn btn-ghost" href="https://github.com/hellojun/LLMChain/blob/main/LLMChain-Whitepaper-v1.1-20261012.pdf" target="_blank" rel="noopener noreferrer">读白皮书（PDF）</a>
+</div>
+</aside>
+<h3 class="sub reveal">2026 年提交最多的几件事</h3>
 <div class="now">
 <article class="card reveal">
 <p><span class="tag">AI Agent</span><span class="tag">预测市场</span><span class="tag dim">Python · Vue</span></p>
@@ -225,8 +236,8 @@ footer a{text-decoration:none}
 <li class="reveal"><span class="y">2022–2023</span><div><h3>交易所级钱包系统</h3><p>发起 ex-wallet：Go 写的完整钱包后端，含充提、签名服务、风控服务、MPC 与 KMS、BTC/ETH/BSC/TRON/XRP 节点接入、运营后台。官网和部分后台 API 是我自己写的。</p></div></li>
 <li class="reveal"><span class="y">2023</span><div><h3>应用链与 DeFi</h3><p>用 Cosmos SDK 做了游戏应用链 gchain，拿到 Cosmos 香港加速器中文开发培训第 2 期黑客松第一名。同期发起 GreatGainGo，做预言机合约与节点。</p></div></li>
 <li class="reveal"><span class="y">2023 末–2024</span><div><h3>铭文那一波</h3><p>写了 Celestia、IoTeX、Cosmos 的铭文工具，发起 CelestLoan 和铭文市场项目。还写了个每秒盯币安上币公告、自动在 OKX 开多的小工具，意外成了我星星最多的仓库。</p></div></li>
-<li class="reveal"><span class="y">2024 末–2025</span><div><h3>Meme 交易与 AI 入门</h3><p>发起 memes-ai：微服务架构的多链 Meme 币交易平台（ETH/BSC/Base/Solana/Tron，带 MEV 保护），前端一部分是我写的。同时写 Solana 节点服务、交易助手 TradeGPT，以及两个德州扑克 AI（一个用 LangChain，一个用 Claude API）。</p></div></li>
-<li class="reveal"><span class="y">2026</span><div><h3>Agent × 链</h3><p>PolySport、Bout 协议、KPAX Ball、OXN 机密 EVM 测试网、园区存证 BaaS，以及做市与多因子量化系统。还写了一个把 Lark 告警交给本地 Codex 结合 SSH 日志做分析的小服务。</p></div></li>
+<li class="reveal"><span class="y">2024 末–2025</span><div><h3>Meme 交易与 AI 入门</h3><p>发起 memes-ai：微服务架构的多链 Meme 币交易平台（ETH/BSC/Base/Solana/Tron，带 MEV 保护）。同时写 Solana 节点服务、交易助手 TradeGPT，以及两个德州扑克 AI（一个用 LangChain，一个用 Claude API）。</p></div></li>
+<li class="reveal"><span class="y">2026</span><div><h3>Agent × 链</h3><p>PolySport、Bout 协议、KPAX Ball，以及做市与多因子量化系统。10 月发布 LLMChain 白皮书：聚合闲置的大模型算力上链供 Agent 调用。</p></div></li>
 </ol>
 </div>
 </section>
@@ -235,34 +246,19 @@ footer a{text-decoration:none}
 <div class="wrap">
 <div class="sec-head reveal"><h2>公开仓库</h2><p>可以直接看代码的几个。</p></div>
 <div class="proj">
+<article class="card reveal"><p><span class="tag">白皮书</span><span class="tag dim">欢迎参与</span></p><h3>LLMChain</h3><p>把闲置的大模型算力聚合上链供 Agent 调用，每次调用生成可验证收据（VSR）并原生结算的独立公链。</p><a class="more" href="https://github.com/hellojun/LLMChain" target="_blank" rel="noopener noreferrer">查看仓库 →</a></article>
 <article class="card reveal"><p><span class="tag dim">Python · Vue</span></p><h3>PolySport</h3><p>多智能体辩论 × 知识图谱 × 链上聪明钱的体育预测引擎。</p><a class="more" href="https://github.com/hellojun/PolySport" target="_blank" rel="noopener noreferrer">查看仓库 →</a></article>
 <article class="card reveal"><p><span class="tag dim">TypeScript</span></p><h3>bout.network</h3><p>Open Agent Gaming Protocol。Hono + Next.js + Drizzle 的 monorepo，合约为 USDC 托管与结算。</p><a class="more" href="https://github.com/hellojun/bout.network" target="_blank" rel="noopener noreferrer">查看仓库 →</a></article>
 <article class="card reveal"><p><span class="tag dim">TypeScript</span></p><h3>bout-game-gomoku</h3><p>Bout 协议外部游戏服务器的参考实现：实现 IGame，包一层 HTTP，注册到协议。</p><a class="more" href="https://github.com/hellojun/bout-game-gomoku" target="_blank" rel="noopener noreferrer">查看仓库 →</a></article>
 <article class="card reveal"><p><span class="tag dim">TypeScript · Python · Solidity</span></p><h3>kpax-ball</h3><p>Polymarket 足球盘口 AI 分析扩展，带仓位抵押借贷合约（Foundry，UUPS 可升级）。</p><a class="more" href="https://github.com/hellojun/kpax-ball" target="_blank" rel="noopener noreferrer">查看仓库 →</a></article>
 <article class="card reveal"><p><span class="tag dim">TypeScript</span><span class="tag">7 ★ · 13 fork</span></p><h3>binance-announments</h3><p>每秒拉取币安公告，识别永续合约上新，自动在 OKX 下多单。</p><a class="more" href="https://github.com/hellojun/binance-announments" target="_blank" rel="noopener noreferrer">查看仓库 →</a></article>
 <article class="card reveal"><p><span class="tag dim">Go · Cosmos SDK</span><span class="tag">黑客松第一</span></p><h3>gchain</h3><p>Cosmos SDK 游戏应用链，CHA 中文开发培训第 2 期黑客松第一名。</p><a class="more" href="https://github.com/hellojun/gchain" target="_blank" rel="noopener noreferrer">查看仓库 →</a></article>
-<article class="card reveal"><p><span class="tag dim">JavaScript</span></p><h3>oxn-docs</h3><p>OXN 机密 EVM 测试网的开发者文档站（Docusaurus）与 DApp 示例。</p><a class="more" href="https://github.com/zkpChain/oxn-docs" target="_blank" rel="noopener noreferrer">查看仓库 →</a></article>
 <article class="card reveal"><p><span class="tag dim">JavaScript</span></p><h3>usdt_wallet</h3><p>2019 年的 USDT 钱包，一切的起点。</p><a class="more" href="https://github.com/hellojun/usdt_wallet" target="_blank" rel="noopener noreferrer">查看仓库 →</a></article>
 </div>
 </div>
 </section>
 
-<section id="teams">
-<div class="wrap">
-<div class="sec-head reveal"><h2>团队项目</h2><p>我发起或参与的组织，代码大多是团队一起写的，这里只说做了什么。</p></div>
-<div class="orgs">
-<div class="org reveal"><span class="k">2022–2023</span><h3>ex-wallet</h3><p>交易所级钱包后端全家桶：钱包、签名、风控、MPC/KMS、多链节点、运营后台。Go 为主。</p></div>
-<div class="org reveal"><span class="k">2024–2026</span><h3>memes-ai</h3><p>多链 Meme 币交易平台：市价/限价/止盈止损、WebSocket 行情、MEV 保护、多级佣金。</p></div>
-<div class="org reveal"><span class="k">2026</span><h3>zkpChain</h3><p>OXN 机密 EVM 测试网：核心链、Sapphire paratime、Web3 网关、浏览器、钱包、水龙头、文档。</p></div>
-<div class="org reveal"><span class="k">2026</span><h3>AlphaMatrix-M · bestrade</h3><p>做市机器人集群（Go）与多因子量化系统（Python）的整合与部署。</p></div>
-<div class="org reveal"><span class="k">2023</span><h3>GreatGainGo</h3><p>预言机合约、预言机节点与脚本、前后端。</p></div>
-<div class="org reveal"><span class="k">2023–2024</span><h3>CelestLoan · InscriptionProject</h3><p>Celestia 生态的借贷与铭文市场。</p></div>
-<div class="org reveal"><span class="k">2021–2022</span><h3>1BoxNFTs · X-oasis · gamelink</h3><p>NFT 平台与市场、Unreal Engine 钱包 SDK、链游。</p></div>
-</div>
-</div>
-</section>
-
-<section class="alt" id="stack">
+<section id="stack">
 <div class="wrap two">
 <div class="reveal">
 <div class="sec-head"><h2>常用的东西</h2><p>按个人与组织仓库的主语言统计。</p></div>
@@ -278,26 +274,12 @@ footer a{text-decoration:none}
 </ul>
 </div>
 <div class="stack reveal">
-<h3>链</h3><p>Bitcoin · Ethereum · BSC · Base · Solana · Tron · Sui · Cosmos SDK · Celestia · Oasis</p>
+<h3>链</h3><p>Bitcoin · Ethereum · BSC · Base · Solana · Tron · Sui · Cosmos SDK · Celestia</p>
 <h3>合约与钱包</h3><p>Solidity · Foundry · Hardhat · viem · MPC · KMS · 多链签名与归集</p>
 <h3>后端</h3><p>Go · FastAPI · NestJS · Hono · Fastify · PostgreSQL · MySQL · Redis · BullMQ · Docker</p>
 <h3>前端</h3><p>React · Next.js · Vue 3 · Vite · Tailwind · Chrome 扩展（MV3）</p>
 <h3>AI</h3><p>Claude · Gemini · DeepSeek · LangChain · Google ADK · Zep GraphRAG · 多 Agent 编排</p>
 </div>
-</div>
-</section>
-
-<section id="misc">
-<div class="wrap">
-<div class="sec-head reveal"><h2>还折腾过</h2><p>一些不成体系但挺好玩的东西。</p></div>
-<ul class="misc">
-<li class="reveal"><b>德州扑克 AI</b>一个用 LangChain 和扑克文档知识库算 EV 的分析 Agent，一个用 Claude API 的策略教练。</li>
-<li class="reveal"><b>Lark 告警分析 Agent</b>群里出现告警，自动 SSH 取日志片段，交给本地 Codex 结合源码分析，再回复到原消息。</li>
-<li class="reveal"><b>TradeGPT 风格的交易助手</b>FastAPI + React 的聊天式行情分析。</li>
-<li class="reveal"><b>StoryForge</b>小说、视频、照片的协作创作平台，Next.js + Fastify + MongoDB。</li>
-<li class="reveal"><b>各种链上脚本</b>空投、余额查询、归集、MEV 实验，Sui、Walrus、Lava、Tron 都碰过。</li>
-<li class="reveal"><b>2020 年的摄影品牌系统</b>微信 Native 支付和智能影棚。</li>
-</ul>
 </div>
 </section>
 
