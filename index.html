@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Jun — a8.baby</title>
-<meta name="description" content="Jun 的个人主页。从钱包和交易所基础设施做起，做过应用链与 NFT，这两年在 AI Agent 与链上系统的交叉点上。">
+<meta name="description" content="Jun 的个人主页。从钱包和交易所基础设施做起，做过应用链与 NFT，这两年在 AI Agent 与链上系统的交叉点上，正在做 LLMChain：把推理调用变成可验证收据的公链。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
@@ -73,6 +73,17 @@ h2{font-family:var(--font-display);font-size:var(--text-xl);font-weight:700}
 .alt{background:var(--color-surface-offset)}
 .tag{display:inline-block;font-size:var(--text-xs);padding:2px var(--space-3);border-radius:var(--radius-full);background:var(--color-primary-highlight);color:var(--color-primary);font-weight:500;margin-right:var(--space-1);margin-bottom:var(--space-1)}
 .tag.dim{background:oklch(from var(--color-text) l c h/.08);color:var(--color-text-muted)}
+/* feature */
+.feat{margin-top:var(--space-12);padding:clamp(var(--space-6),4vw,var(--space-10));border:1px solid color-mix(in oklab,var(--color-primary) 35%,transparent);border-left:4px solid var(--color-primary);border-radius:var(--radius-lg);background:var(--color-surface);box-shadow:var(--shadow-md);display:grid;gap:var(--space-4)}
+.feat-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--space-2)}
+.feat-date{font-size:var(--text-xs);color:var(--color-text-faint)}
+.feat h2{font-size:var(--text-xl)}
+.feat-lead{color:var(--color-text-muted);max-width:60ch}
+.feat-points{list-style:none;display:grid;gap:var(--space-3);grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));font-size:var(--text-sm);color:var(--color-text-muted)}
+.feat-points li{padding:var(--space-3) var(--space-4);border-radius:var(--radius-md);background:var(--color-surface-offset)}
+.feat-points b{display:block;color:var(--color-text);margin-bottom:2px}
+.feat-call{font-size:var(--text-sm);color:var(--color-text-muted);max-width:64ch}
+.feat .cta{margin-top:var(--space-2)}
 /* now */
 .now{display:grid;gap:var(--space-4);grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr))}
 .card{background:var(--color-surface);border:1px solid oklch(from var(--color-text) l c h/.1);border-radius:var(--radius-lg);padding:var(--space-6);box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:var(--space-3)}
@@ -134,6 +145,7 @@ footer a{text-decoration:none}
 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="1" y="1" width="30" height="30" rx="6" stroke="currentColor" stroke-width="2"/><path d="M8 22l4-12 4 12M9.5 18h5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="22" cy="13.5" r="2.5" stroke="var(--color-primary)" stroke-width="2"/><circle cx="22" cy="20" r="3" stroke="var(--color-primary)" stroke-width="2"/></svg>
 <span>a8.baby</span></a>
 <nav aria-label="主导航">
+<a class="hide-m" href="#feat-h">LLMChain</a>
 <a class="hide-m" href="#now">现在</a>
 <a class="hide-m" href="#timeline">经历</a>
 <a class="hide-m" href="#open">开源</a>
@@ -148,11 +160,27 @@ footer a{text-decoration:none}
 <div class="wrap hero" id="top">
 <p class="eyebrow">hellojun · GitHub 2013 年至今</p>
 <h1>你好，我是 Jun。一个一直在写代码的人。</h1>
-<p class="lead">从 USDT 钱包和交易所基础设施做起，做过 NFT 和应用链，在 Cosmos 黑客松拿过第一。这两年大部分时间花在 AI Agent 与链上系统的交叉点上：让 Agent 自己下注、对战、结算，也让 AI 来分析盘口和做市风险。</p>
+<p class="lead">从 USDT 钱包和交易所基础设施做起，做过 NFT 和应用链，在 Cosmos 黑客松拿过第一。这两年大部分时间花在 AI Agent 与链上系统的交叉点上：让 Agent 自己下注、对战、结算，也让 AI 来分析盘口和做市风险。现在想做的，是给 Agent 之间的推理调用开一张可验证的发票。</p>
 <div class="cta">
 <a class="btn btn-primary" href="https://github.com/hellojun" target="_blank" rel="noopener noreferrer">GitHub @hellojun</a>
 <a class="btn btn-ghost" href="#timeline">看看这些年做了什么</a>
 </div>
+<aside class="feat reveal in" aria-labelledby="feat-h">
+<div class="feat-head"><span class="tag">新项目 · 欢迎参与</span><span class="feat-date">2026 年 10 月</span></div>
+<h2 id="feat-h">LLMChain：给 Agent 经济开发票的链</h2>
+<p class="feat-lead">人类交易靠发票，Agent 交易靠什么？一天成千上万次推理调用，没有任何凭证能证明它真的发生过、用的是声明的模型、价格是约定的价格。LLMChain 是一条把每次推理调用变成可验证收据（VSR）并原生结算的独立公链。</p>
+<ul class="feat-points">
+<li><b>收据即结算</b>每一次完成的推理调用生成一张 VSR 收据，收据是唯一上链的对象。</li>
+<li><b>毫秒级调用</b>选服务商、付款、执行都在链下，只有结算上链，不等区块确认。</li>
+<li><b>造假不划算</b>隐蔽挑战、分级保真证明、质押罚没，以次充好在经济上亏本。</li>
+<li><b>补上缺的半段</b>x402 解决怎么付钱，ERC-8004 解决 Agent 是谁，LLMChain 解决调用是否真实、多方如何结清。</li>
+</ul>
+<p class="feat-call">基金会做链，社区做生态。白皮书 v1.1 刚放出来，还有不少【待定】。如果你对可验证推理、支付通道、TEE 或 zkML 有想法，欢迎来提 issue、挑毛病、一起把它做出来。</p>
+<div class="cta">
+<a class="btn btn-primary" href="https://github.com/hellojun/OpenLLM" target="_blank" rel="noopener noreferrer">GitHub · hellojun/OpenLLM</a>
+<a class="btn btn-ghost" href="https://github.com/hellojun/OpenLLM/blob/main/LLMChain-Whitepaper-v1.1-20261012.pdf" target="_blank" rel="noopener noreferrer">读白皮书（PDF）</a>
+</div>
+</aside>
 <div class="stats"><span><b>200+</b> 个仓库</span><span><b>14</b> 个组织</span><span>主要写 <b>Go · Python · TypeScript</b></span></div>
 </div>
 
@@ -179,20 +207,9 @@ footer a{text-decoration:none}
 <a class="more" href="https://github.com/hellojun/kpax-ball" target="_blank" rel="noopener noreferrer">github.com/hellojun/kpax-ball →</a>
 </article>
 <article class="card reveal">
-<p><span class="tag">机密 EVM</span><span class="tag">Oasis</span><span class="tag dim">Go · Rust</span></p>
-<h3>OXN 测试网</h3>
-<p>基于 Oasis 的机密 EVM 测试链：Solidity 合约直接复用，交易 calldata 和 view 调用默认加密。我负责开发者文档和链周边（浏览器、钱包、水龙头）的整合。</p>
-<a class="more" href="https://github.com/zkpChain/oxn-docs" target="_blank" rel="noopener noreferrer">github.com/zkpChain/oxn-docs →</a>
-</article>
-<article class="card reveal">
 <p><span class="tag">做市 · 量化</span><span class="tag dim">Go · Python</span></p>
 <h3>做市与多因子系统</h3>
 <p>一套 Go 写的做市机器人集群（报价、对冲、套利、自成交、风控、告警），以及一套 Python 多因子回测与执行系统的集成。团队项目，我负责整体和集成。</p>
-</article>
-<article class="card reveal">
-<p><span class="tag">可信存证</span><span class="tag dim">NestJS · Hardhat</span></p>
-<h3>园区区块链存证服务</h3>
-<p>园区各业务系统通过统一上链网关把数据哈希与关键要素上链，可出具存证证书，供银行与法院独立核验。</p>
 </article>
 </div>
 </div>
@@ -209,7 +226,6 @@ footer a{text-decoration:none}
 <li class="reveal"><span class="y">2023</span><div><h3>应用链与 DeFi</h3><p>用 Cosmos SDK 做了游戏应用链 gchain，拿到 Cosmos 香港加速器中文开发培训第 2 期黑客松第一名。同期发起 GreatGainGo，做预言机合约与节点。</p></div></li>
 <li class="reveal"><span class="y">2023 末–2024</span><div><h3>铭文那一波</h3><p>写了 Celestia、IoTeX、Cosmos 的铭文工具，发起 CelestLoan 和铭文市场项目。还写了个每秒盯币安上币公告、自动在 OKX 开多的小工具，意外成了我星星最多的仓库。</p></div></li>
 <li class="reveal"><span class="y">2024 末–2025</span><div><h3>Meme 交易与 AI 入门</h3><p>发起 memes-ai：微服务架构的多链 Meme 币交易平台（ETH/BSC/Base/Solana/Tron，带 MEV 保护），前端一部分是我写的。同时写 Solana 节点服务、交易助手 TradeGPT，以及两个德州扑克 AI（一个用 LangChain，一个用 Claude API）。</p></div></li>
-<li class="reveal"><span class="y">2025 末</span><div><h3>AIxC</h3><p>发起 AIxC-Tech：Web3 Hub（钱包登录、C10 指数预测游戏、任务与排行榜）、Agent 竞技场 agentir、机器人租赁平台 roboshare（Stripe 分账）。参与基于 Google ADK 的多 Agent 体育问答系统。</p></div></li>
 <li class="reveal"><span class="y">2026</span><div><h3>Agent × 链</h3><p>PolySport、Bout 协议、KPAX Ball、OXN 机密 EVM 测试网、园区存证 BaaS，以及做市与多因子量化系统。还写了一个把 Lark 告警交给本地 Codex 结合 SSH 日志做分析的小服务。</p></div></li>
 </ol>
 </div>
@@ -237,7 +253,6 @@ footer a{text-decoration:none}
 <div class="orgs">
 <div class="org reveal"><span class="k">2022–2023</span><h3>ex-wallet</h3><p>交易所级钱包后端全家桶：钱包、签名、风控、MPC/KMS、多链节点、运营后台。Go 为主。</p></div>
 <div class="org reveal"><span class="k">2024–2026</span><h3>memes-ai</h3><p>多链 Meme 币交易平台：市价/限价/止盈止损、WebSocket 行情、MEV 保护、多级佣金。</p></div>
-<div class="org reveal"><span class="k">2025–2026</span><h3>AIxC-Tech</h3><p>Web3 Hub 与预测游戏、Agent 竞技场、机器人租赁平台 roboshare、Robothon 活动站。</p></div>
 <div class="org reveal"><span class="k">2026</span><h3>zkpChain</h3><p>OXN 机密 EVM 测试网：核心链、Sapphire paratime、Web3 网关、浏览器、钱包、水龙头、文档。</p></div>
 <div class="org reveal"><span class="k">2026</span><h3>AlphaMatrix-M · bestrade</h3><p>做市机器人集群（Go）与多因子量化系统（Python）的整合与部署。</p></div>
 <div class="org reveal"><span class="k">2023</span><h3>GreatGainGo</h3><p>预言机合约、预言机节点与脚本、前后端。</p></div>
