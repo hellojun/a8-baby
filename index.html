@@ -5,308 +5,628 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Jun — a8.baby</title>
 <meta name="description" content="Jun 的个人主页。多年交易所钱包、做市与风控系统经验，近两年关注 AI 与 Crypto 的结合，当前方向是 LLMChain。">
+<meta name="theme-color" content="#0C0E12">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <meta property="og:title" content="Jun — a8.baby">
+<meta property="og:description" content="多年交易所钱包、做市与风控系统经验，当前方向是 LLMChain：聚合闲置的大模型算力上链供 Agent 调用。">
 <meta property="og:image" content="https://a8.baby/avatar.jpg">
+<meta property="og:url" content="https://a8.baby/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 <style>
-/* Art direction: 一个写代码的人的自我介绍 → 平实、克制、有时间感
-   Palette: warm neutral, single teal accent. Typography: Noto Serif SC display + Satoshi/Noto Sans SC body. */
-:root,[data-theme="light"]{
---color-bg:#f7f6f2;--color-surface:#f9f8f5;--color-surface-2:#fbfbf9;--color-surface-offset:#f3f0ec;--color-divider:#dcd9d5;--color-border:#d4d1ca;
---color-text:#28251d;--color-text-muted:#625f59;--color-text-faint:#8a8882;--color-text-inverse:#f9f8f4;
---color-primary:#01696f;--color-primary-hover:#0c4e54;--color-primary-highlight:#cedcd8;
---shadow-sm:0 1px 2px oklch(0.2 0.01 80/.06);--shadow-md:0 4px 12px oklch(0.2 0.01 80/.08);
-}
-[data-theme="dark"]{
---color-bg:#171614;--color-surface:#1c1b19;--color-surface-2:#201f1d;--color-surface-offset:#1d1c1a;--color-divider:#262523;--color-border:#393836;
---color-text:#cdccca;--color-text-muted:#9b9a96;--color-text-faint:#797876;--color-text-inverse:#171614;
---color-primary:#4f98a3;--color-primary-hover:#6fb1bb;--color-primary-highlight:#313b3b;
---shadow-sm:0 1px 2px oklch(0 0 0/.2);--shadow-md:0 4px 12px oklch(0 0 0/.3);
-}
+/* Art direction: 深色账本风 —— 呼应 LLMChain「收据即结算」。
+   一个暗底、一个暖纸（收据）、一个琥珀强调色；等宽字体做编号与标签。 */
 :root{
---text-xs:clamp(.75rem,.7rem + .25vw,.875rem);--text-sm:clamp(.875rem,.8rem + .35vw,1rem);--text-base:clamp(1rem,.95rem + .25vw,1.125rem);--text-lg:clamp(1.125rem,1rem + .75vw,1.5rem);--text-xl:clamp(1.5rem,1.2rem + 1.25vw,2.25rem);--text-2xl:clamp(2rem,1.2rem + 2.5vw,3.5rem);
---space-1:.25rem;--space-2:.5rem;--space-3:.75rem;--space-4:1rem;--space-5:1.25rem;--space-6:1.5rem;--space-8:2rem;--space-10:2.5rem;--space-12:3rem;--space-16:4rem;--space-20:5rem;--space-24:6rem;
---radius-sm:.375rem;--radius-md:.5rem;--radius-lg:.75rem;--radius-full:9999px;
---transition-interactive:180ms cubic-bezier(.16,1,.3,1);
---font-display:'Noto Serif SC','Songti SC',serif;--font-body:'Satoshi','Noto Sans SC','PingFang SC',sans-serif;
---content-wide:1120px;
+  --bg:#0C0E12;--bg-2:#0F1116;--surface:#14171D;--line:#262B33;--line-2:#1C2027;--line-hi:#3A414D;--border-btn:#363C47;
+  --text:#EDEDE8;--text-2:#D5D7D2;--muted:#A3A8B0;--faint:#6F757E;
+  --accent:#F2B33D;--accent-hi:#FFC65A;--on-accent:#15110A;
+  --paper:#F5F1E6;--paper-ink:#15110A;--paper-muted:#6B6657;--paper-line:#B8B2A3;--paper-chip:#E8DFC6;
+  --sans:'Noto Sans SC','PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+  --display:'Space Grotesk','Noto Sans SC',sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --wide:1200px;--t:150ms;
 }
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{-webkit-text-size-adjust:none;text-size-adjust:none;-webkit-font-smoothing:antialiased;scroll-behavior:smooth;scroll-padding-top:var(--space-16)}
-body{min-height:100dvh;line-height:1.7;font-family:var(--font-body);font-size:var(--text-base);color:var(--color-text);background:var(--color-bg)}
-img,svg{display:block;max-width:100%;height:auto}
-button{font:inherit;color:inherit;cursor:pointer;background:none;border:none}
-a{color:inherit}
-h1,h2,h3{text-wrap:balance;line-height:1.25}
-p{text-wrap:pretty;max-width:68ch}
-:focus-visible{outline:2px solid var(--color-primary);outline-offset:3px;border-radius:var(--radius-sm)}
-a,button{transition:color var(--transition-interactive),background var(--transition-interactive),border-color var(--transition-interactive)}
-.skip{position:absolute;left:-999px;top:var(--space-2);background:var(--color-primary);color:var(--color-text-inverse);padding:var(--space-2) var(--space-4);border-radius:var(--radius-sm);z-index:100}
-.skip:focus{left:var(--space-2)}
-.wrap{max-width:var(--content-wide);margin-inline:auto;padding-inline:clamp(var(--space-4),4vw,var(--space-8))}
-header{position:sticky;top:0;z-index:50;background:color-mix(in oklab,var(--color-bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid oklch(from var(--color-text) l c h/.1)}
-.bar{display:flex;align-items:center;justify-content:space-between;height:64px;gap:var(--space-4)}
-.brand{display:flex;align-items:center;gap:var(--space-3);text-decoration:none;font-weight:700;color:var(--color-text)}
-.brand .avatar{width:32px;height:32px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 1px oklch(from var(--color-text) l c h/.15)}
-nav{display:flex;align-items:center;gap:var(--space-5)}
-nav a{font-size:var(--text-sm);text-decoration:none;color:var(--color-text-muted)}
-nav a:hover{color:var(--color-text)}
-.icon-btn{width:44px;height:44px;display:grid;place-items:center;border-radius:var(--radius-md);color:var(--color-text-muted)}
-.icon-btn:hover{color:var(--color-text);background:var(--color-surface-offset)}
-.btn{display:inline-flex;align-items:center;gap:var(--space-2);justify-content:center;min-height:44px;padding:0 var(--space-6);border-radius:var(--radius-md);font-size:var(--text-sm);font-weight:500;text-decoration:none;border:1px solid transparent}
-.btn-primary{background:var(--color-primary);color:#fff}
-.btn-primary:hover{background:var(--color-primary-hover)}
-.btn-ghost{border-color:oklch(from var(--color-text) l c h/.2);color:var(--color-text)}
-.btn-ghost:hover{background:var(--color-surface-offset)}
-.btn:active{transform:translateY(1px)}
-.hero{padding-block:clamp(var(--space-16),12vw,var(--space-24)) clamp(var(--space-12),8vw,var(--space-20))}
-.eyebrow{font-size:var(--text-xs);letter-spacing:.14em;text-transform:uppercase;color:var(--color-primary);font-weight:700;margin-bottom:var(--space-6)}
-h1{font-family:var(--font-display);font-size:min(var(--text-2xl),5vw);font-weight:700;max-width:none;white-space:nowrap;letter-spacing:-.01em}
-@media(max-width:480px){h1{font-size:var(--text-xl);white-space:normal}}
-.hero p.lead{margin-top:var(--space-6);font-size:var(--text-lg);color:var(--color-text-muted);max-width:44ch;line-height:1.6}
-.cta{display:flex;flex-wrap:wrap;gap:var(--space-3);margin-top:var(--space-8)}
-.stats{display:flex;flex-wrap:wrap;gap:var(--space-3) var(--space-8);margin-top:var(--space-12);padding-top:var(--space-6);border-top:1px solid oklch(from var(--color-text) l c h/.1);font-size:var(--text-sm);color:var(--color-text-muted)}
-.stats b{color:var(--color-text);font-weight:700;font-variant-numeric:tabular-nums}
-section{padding-block:clamp(var(--space-12),7vw,var(--space-20))}
-.sec-head{display:grid;gap:var(--space-3);margin-bottom:var(--space-10)}
-h2{font-family:var(--font-display);font-size:var(--text-xl);font-weight:700}
-.sec-head p{color:var(--color-text-muted);font-size:var(--text-base)}
-.alt{background:var(--color-surface-offset)}
-.tag{display:inline-block;font-size:var(--text-xs);padding:2px var(--space-3);border-radius:var(--radius-full);background:var(--color-primary-highlight);color:var(--color-primary);font-weight:500;margin-right:var(--space-1);margin-bottom:var(--space-1)}
-.tag.dim{background:oklch(from var(--color-text) l c h/.08);color:var(--color-text-muted)}
-/* feature */
-.feat{margin-bottom:var(--space-10);padding:clamp(var(--space-6),4vw,var(--space-10));border:1px solid color-mix(in oklab,var(--color-primary) 35%,transparent);border-left:4px solid var(--color-primary);border-radius:var(--radius-lg);background:var(--color-surface);box-shadow:var(--shadow-md);display:grid;gap:var(--space-4)}
-.feat-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--space-2)}
-.feat-date{font-size:var(--text-xs);color:var(--color-text-faint)}
-.feat h2{font-size:var(--text-xl)}
-.feat-lead{color:var(--color-text-muted);max-width:60ch}
-.feat-points{list-style:none;display:grid;gap:var(--space-3);grid-template-columns:1fr;font-size:var(--text-sm);color:var(--color-text-muted)}
-@media(min-width:700px){.feat-points{grid-template-columns:1fr 1fr}}
-.feat-points li{padding:var(--space-3) var(--space-4);border-radius:var(--radius-md);background:var(--color-surface-offset)}
-.feat-points b{display:block;color:var(--color-text);margin-bottom:2px}
-.feat-call{font-size:var(--text-sm);color:var(--color-text-muted);max-width:64ch}
-.feat .cta{margin-top:var(--space-2)}
-/* now */
-.sub{font-family:var(--font-body);font-size:var(--text-base);font-weight:700;color:var(--color-text-muted);margin-bottom:var(--space-4)}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.7}
+img{display:block;max-width:100%}
+a{color:var(--text);text-decoration:none;transition:color var(--t),border-color var(--t),background var(--t)}
+a:hover{color:var(--accent)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+button{font-family:inherit;font-size:inherit}
+h1,h2,h3,p{margin:0}
+.mono{font-family:var(--mono)}
+.wrap{max-width:var(--wide);margin:0 auto;padding:0 32px}
+.skip{position:absolute;left:16px;top:-60px;z-index:20;padding:10px 14px;background:var(--accent);color:var(--on-accent);border-radius:6px;font-size:14px}
+.skip:focus{top:12px;color:var(--on-accent)}
 
-.now{display:grid;gap:var(--space-4);grid-template-columns:1fr}
-@media(min-width:700px){.now{grid-template-columns:1fr 1fr}}
-.card{background:var(--color-surface);border:1px solid oklch(from var(--color-text) l c h/.1);border-radius:var(--radius-lg);padding:var(--space-6);box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:var(--space-3)}
-.card h3{font-size:var(--text-lg);font-family:var(--font-body)}
-.card p{color:var(--color-text-muted);font-size:var(--text-sm)}
-.card a.more{font-size:var(--text-sm);color:var(--color-primary);margin-top:auto;display:inline-block;min-height:24px;text-decoration:none}
-.card a.more:hover{text-decoration:underline}
-/* timeline */
-.tl{list-style:none;display:grid;border-top:1px solid oklch(from var(--color-text) l c h/.12)}
-.tl li{display:grid;grid-template-columns:1fr;gap:var(--space-2);padding-block:var(--space-6);border-bottom:1px solid oklch(from var(--color-text) l c h/.12)}
-.tl .y{font-family:var(--font-display);font-size:var(--text-lg);font-weight:700;color:var(--color-primary);font-variant-numeric:tabular-nums;line-height:1.3}
-.tl h3{font-size:var(--text-base);font-weight:700;font-family:var(--font-body)}
-.tl p{color:var(--color-text-muted);font-size:var(--text-sm);margin-top:var(--space-1)}
-@media(min-width:800px){.tl li{grid-template-columns:7rem 1fr;align-items:start;gap:var(--space-6)}.tl .y{padding-top:.15rem}}
-/* projects */
-.proj{display:grid;gap:var(--space-4);grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr))}
-.meta{display:flex;flex-wrap:wrap;gap:var(--space-3);font-size:var(--text-xs);color:var(--color-text-faint)}
-/* orgs */
-.orgs{display:grid;gap:var(--space-3)}
-.org{display:grid;gap:var(--space-1) var(--space-4);padding:var(--space-4) 0;border-bottom:1px solid oklch(from var(--color-text) l c h/.12)}
-.org:first-child{border-top:1px solid oklch(from var(--color-text) l c h/.12)}
-.org .k{font-size:var(--text-xs);color:var(--color-text-faint);font-variant-numeric:tabular-nums}
-.org h3{font-size:var(--text-base);font-family:var(--font-body);font-weight:700}
-.org p{font-size:var(--text-sm);color:var(--color-text-muted)}
-@media(min-width:800px){.org{grid-template-columns:7rem 14rem 1fr;align-items:baseline}}
-/* stack */
-.two{display:grid;gap:var(--space-10)}
-@media(min-width:800px){.two{grid-template-columns:1fr 1fr}}
-.langs{list-style:none;display:grid;gap:var(--space-3)}
-.langs li{display:grid;grid-template-columns:6.5rem 1fr 2.5rem;align-items:center;gap:var(--space-3);font-size:var(--text-sm)}
-.langs .bar{height:10px;border-radius:var(--radius-full);background:oklch(from var(--color-text) l c h/.08);overflow:hidden;display:block}
-.langs .bar i{display:block;height:100%;background:var(--color-primary);border-radius:var(--radius-full);width:var(--w);transform-origin:left;transition:transform .8s cubic-bezier(.16,1,.3,1)}
-.langs .n{text-align:right;color:var(--color-text-faint);font-variant-numeric:tabular-nums}
-.stack h3{font-size:var(--text-sm);letter-spacing:.08em;text-transform:uppercase;color:var(--color-text-faint);font-weight:700;margin-bottom:var(--space-2);margin-top:var(--space-5)}
-.stack h3:first-child{margin-top:0}
-.stack p{font-size:var(--text-sm);color:var(--color-text-muted)}
-/* misc */
-.misc{list-style:none;display:grid;gap:var(--space-3);grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr))}
-.misc li{font-size:var(--text-sm);color:var(--color-text-muted);padding:var(--space-4);border:1px solid oklch(from var(--color-text) l c h/.1);border-radius:var(--radius-md);background:var(--color-surface)}
-.misc b{color:var(--color-text);font-weight:700;display:block;margin-bottom:var(--space-1)}
-/* contact */
-.contact{padding-block:clamp(var(--space-16),9vw,var(--space-24))}
-.contact h2{font-size:var(--text-2xl);max-width:16ch}
-.contact p{margin-top:var(--space-4);color:var(--color-text-muted)}
-footer{padding-block:var(--space-8);border-top:1px solid oklch(from var(--color-text) l c h/.1);font-size:var(--text-xs);color:var(--color-text-faint)}
-footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:var(--space-2)}
-footer a{text-decoration:none}
-@media(max-width:700px){nav a.hide-m{display:none}}
-.reveal{opacity:0;transform:translateY(12px);transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1)}
+/* 导航 */
+.site-header{position:sticky;top:0;z-index:10;background:rgba(12,14,18,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line-2)}
+.nav{min-height:64px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{font-family:var(--mono);font-size:15px;font-weight:500;letter-spacing:.02em;display:inline-flex;align-items:center;gap:10px}
+.brand img{width:28px;height:28px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 1px var(--line)}
+.brand .sq{width:10px;height:10px;border-radius:2px;background:var(--accent)}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nav-links a{padding:10px 12px;border-radius:6px;font-size:14px;color:var(--muted)}
+.nav-links a:hover{color:var(--text);background:var(--surface)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.menu-btn{display:none;width:44px;height:44px;border-radius:8px;border:1px solid var(--line);background:transparent;color:var(--text);align-items:center;justify-content:center;cursor:pointer;transition:border-color var(--t),color var(--t)}
+.menu-btn:hover{border-color:var(--accent);color:var(--accent)}
+.menu-btn .ic-close{display:none}
+.menu-btn[aria-expanded="true"] .ic-open{display:none}
+.menu-btn[aria-expanded="true"] .ic-close{display:block}
+.menu-panel{display:none;border-top:1px solid var(--line-2);background:var(--bg);padding:12px 20px 20px;flex-direction:column;gap:4px}
+.menu-panel.open{display:flex}
+.menu-panel a{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-radius:8px;font-size:16px;border:1px solid transparent}
+.menu-panel a:hover{background:var(--surface);border-color:var(--line)}
+.menu-panel a .n{font-family:var(--mono);font-size:12px;color:var(--faint)}
+
+/* 按钮与标签 */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 22px;border-radius:8px;font-weight:500;font-size:15px;cursor:pointer;border:1px solid transparent;transition:background var(--t),border-color var(--t),color var(--t),transform 100ms}
+.btn:active{transform:translateY(1px)}
+.btn-primary{background:var(--accent);color:var(--on-accent);font-weight:600}
+.btn-primary:hover{background:var(--accent-hi);color:var(--on-accent)}
+.btn-ghost{border-color:var(--border-btn);background:transparent;color:var(--text)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+.btn-sm{min-height:40px;padding:0 16px;font-size:14px}
+.chip{font-family:var(--mono);font-size:12px;color:var(--muted);border:1px solid #2E343E;border-radius:999px;padding:4px 10px;line-height:1.3;white-space:nowrap}
+.chip.hi{color:var(--accent);border-color:var(--accent)}
+.eyebrow{font-family:var(--mono);font-size:13px;letter-spacing:.12em;color:var(--accent)}
+.live{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;color:var(--muted);border:1px solid #2E343E;border-radius:999px;padding:5px 12px 5px 10px}
+.live .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+
+/* 区块 */
+.section{padding:96px 0;border-top:1px solid var(--line-2)}
+.section.alt{background:var(--bg-2)}
+.section-head{display:flex;flex-direction:column;gap:12px}
+.section-head h2{font-size:32px;line-height:1.3;font-weight:700}
+.stack{display:flex;flex-direction:column}
+.g2,.g4{display:grid;gap:20px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:28px;display:flex;flex-direction:column;gap:14px;min-width:0;transition:border-color var(--t),transform var(--t)}
+.card:hover{border-color:var(--line-hi);transform:translateY(-2px)}
+.card.featured{border-color:var(--accent)}
+.card h3{font-family:var(--display);font-size:20px;font-weight:700;line-height:1.3}
+.card p{font-size:14px;line-height:1.8;color:var(--muted)}
+.card .tags{display:flex;gap:8px;flex-wrap:wrap}
+.repo-link{font-family:var(--mono);font-size:13px;color:var(--accent)}
+.repo-link:hover{color:var(--accent-hi);text-decoration:underline}
+
+/* 首屏 */
+.hero{padding:112px 0 80px}
+.hero-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:32px;row-gap:40px;align-items:center}
+.hero-text{grid-column:span 7;display:flex;flex-direction:column;gap:28px;min-width:0}
+.hero-top{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.hero h1{font-size:60px;line-height:1.15;font-weight:700;letter-spacing:-.01em}
+.hero .lede{font-size:18px;line-height:1.8;color:var(--muted);max-width:620px}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap}
+.stats{display:flex;gap:40px;flex-wrap:wrap;padding-top:12px;border-top:1px solid var(--line)}
+.stat{display:flex;flex-direction:column;gap:2px}
+.stat b{font-family:var(--display);font-size:28px;font-weight:700;line-height:1.2}
+.stat span{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.06em}
+.hero-receipt{grid-column:span 5;display:flex;flex-direction:column;align-items:center;gap:16px;min-width:0}
+
+/* 收据 */
+.receipt{width:100%;max-width:400px;background:var(--paper);color:var(--paper-ink);border-radius:6px;padding:28px 28px 24px;display:flex;flex-direction:column;gap:14px;box-shadow:0 30px 60px rgba(0,0,0,.45);transform:rotate(-1.5deg);transition:transform 250ms}
+.receipt:hover{transform:rotate(0)}
+.receipt .row{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.receipt .hd{font-family:var(--mono);font-size:12px;letter-spacing:.14em;font-weight:500}
+.receipt .id{font-family:var(--mono);font-size:12px;color:var(--paper-muted)}
+.receipt .ttl{font-family:var(--display);font-size:22px;font-weight:700;line-height:1.2}
+.receipt .sample{font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--paper-muted);border:1px solid var(--paper-line);border-radius:4px;padding:2px 6px}
+.receipt .dash{border-top:1px dashed var(--paper-line)}
+.receipt dl{margin:0;font-family:var(--mono);font-size:13px;line-height:1.9;display:flex;flex-direction:column}
+.receipt dl div{display:flex;justify-content:space-between;gap:12px}
+.receipt dt{color:var(--paper-muted)}
+.receipt dd{margin:0}
+.receipt .amount{font-family:var(--display);font-size:24px;font-weight:700}
+.receipt .note{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--paper-muted)}
+.badge{font-family:var(--mono);font-size:11px;font-weight:500;padding:4px 10px;border-radius:4px;background:var(--paper-ink);color:var(--accent)}
+.badge.pending{background:var(--paper-chip);color:var(--paper-muted)}
+.receipt.flash{animation:flash 400ms ease}
+@keyframes flash{0%{transform:rotate(-1.5deg) scale(1)}40%{transform:rotate(0) scale(1.02)}100%{transform:rotate(-1.5deg) scale(1)}}
+
+/* LLMChain */
+.feature-head{display:flex;flex-direction:column;gap:16px;max-width:820px}
+.feature-head .meta{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.feature-head h2{font-size:40px;line-height:1.25;font-weight:700}
+.feature-head p{font-size:17px;line-height:1.85;color:var(--muted)}
+.pillar .top{display:flex;justify-content:space-between;align-items:center}
+.pillar .top svg{color:var(--faint)}
+.pillar .idx{font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.1em}
+.pillar h3{font-family:var(--sans);font-size:18px;line-height:1.4}
+.callout{display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap;padding:28px 32px;border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:12px;background:var(--surface)}
+.callout p{flex:1 1 520px;font-size:15px;line-height:1.8;color:var(--muted)}
+.callout .cta{display:flex;gap:12px;flex-wrap:wrap}
+
+/* 项目 */
+.proj{padding:32px;gap:16px}
+.proj h3{font-size:24px}
+.proj p{font-size:15px}
+.private{font-family:var(--mono);font-size:13px;color:var(--faint);display:inline-flex;align-items:center;gap:8px}
+
+/* 时间线 */
+.tl{border-bottom:1px solid var(--line)}
+.tl li{list-style:none;display:grid;grid-template-columns:160px minmax(0,1fr);column-gap:40px;padding:28px 0;border-top:1px solid var(--line)}
+.tl ul{margin:0;padding:0}
+.tl .y{display:flex;align-items:center;gap:12px;font-family:var(--mono);font-size:20px;font-weight:500;color:var(--accent)}
+.tl .y::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent);flex:none}
+.tl h3{font-size:20px;font-weight:700;margin-bottom:8px}
+.tl p{color:var(--muted);line-height:1.8}
+
+/* 仓库筛选 */
+.repos-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.filters{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.filter{font-family:var(--mono);font-size:13px;min-height:40px;padding:0 16px;border-radius:999px;border:1px solid #2E343E;background:transparent;color:var(--muted);cursor:pointer;transition:all var(--t)}
+.filter:hover{border-color:var(--accent);color:var(--text)}
+.filter[aria-pressed="true"]{border-color:var(--accent);background:var(--accent);color:var(--on-accent)}
+.count{font-family:var(--mono);font-size:12px;color:var(--faint);margin-left:8px}
+.card.hidden{display:none}
+
+/* 技术栈 */
+.langs{display:flex;flex-direction:column;gap:12px;min-width:0}
+.lang{display:grid;grid-template-columns:110px minmax(0,1fr) 40px;align-items:center;column-gap:16px;font-family:var(--mono);font-size:14px}
+.lang .track{height:10px;background:var(--line-2);border-radius:999px;overflow:hidden}
+.lang .bar{height:10px;border-radius:999px;background:var(--accent);width:0;transition:width 700ms ease}
+.lang .n{color:var(--muted);text-align:right}
+.langs .foot{font-family:var(--mono);font-size:12px;color:var(--faint);margin-top:8px}
+.stacks{border-bottom:1px solid var(--line);min-width:0}
+.stacks div{display:grid;grid-template-columns:140px minmax(0,1fr);column-gap:32px;padding:18px 0;border-top:1px solid var(--line)}
+.stacks div:first-child{border-top:0;padding-top:0}
+.stacks dt{font-family:var(--mono);font-size:13px;color:var(--accent);letter-spacing:.08em}
+.stacks dd{margin:0;font-size:15px;line-height:1.8;color:var(--text-2)}
+
+/* 联系 */
+.contact{padding:120px 0}
+.contact .wrap{display:flex;flex-direction:column;gap:32px;align-items:flex-start}
+.contact h2{font-size:64px;line-height:1.1;font-weight:700;letter-spacing:-.01em}
+.contact .lede{font-size:18px;color:var(--muted)}
+.contact .cta{display:flex;gap:12px;flex-wrap:wrap}
+
+footer{border-top:1px solid var(--line-2);padding:28px 0;font-family:var(--mono);font-size:12px;color:var(--faint)}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+footer .r{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+footer a{color:var(--muted);display:inline-flex;align-items:center;gap:6px}
+
+/* 入场 */
+.reveal{opacity:0;transform:translateY(12px);transition:opacity 500ms ease,transform 500ms ease}
 .reveal.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}html{scroll-behavior:auto}}
+
+@media (max-width:980px){
+  .g4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .hero-text,.hero-receipt{grid-column:span 12}
+  .nav-links{display:none}
+  .menu-btn{display:inline-flex}
+}
+@media (max-width:640px){
+  .wrap{padding:0 20px}
+  .g2,.g4{grid-template-columns:repeat(1,minmax(0,1fr))}
+  .section{padding:72px 0}
+  .hero{padding:64px 0 48px}
+  .hero h1{font-size:36px}
+  .hero h1 br{display:none}
+  .feature-head h2{font-size:28px}
+  .section-head h2{font-size:26px}
+  .contact h2{font-size:48px}
+  .btn{width:100%}
+  .cta{flex-direction:column}
+  .tl li,.stacks div{grid-template-columns:minmax(0,1fr);row-gap:8px}
+  .lang{grid-template-columns:90px minmax(0,1fr) 36px}
+  .receipt{transform:none}
+  .card,.proj{padding:22px}
+  .callout{padding:22px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none !important;animation:none !important}
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none}
+}
 </style>
 </head>
 <body>
-<a class="skip" href="#main">跳到正文</a>
-<header>
-<div class="wrap bar">
-<a class="brand" href="#top" aria-label="a8.baby 首页">
-<img class="avatar" src="avatar.jpg" width="32" height="32" alt="">
-<span>a8.baby</span></a>
-<nav aria-label="主导航">
-<a class="hide-m" href="#feat-h">LLMChain</a>
-<a class="hide-m" href="#now">现在</a>
-<a class="hide-m" href="#timeline">经历</a>
-<a class="hide-m" href="#open">开源</a>
-<a href="#contact">联系</a>
-<button class="icon-btn" data-theme-toggle aria-label="切换深色模式"></button>
-</nav>
-</div>
+<a href="#top" class="skip">跳到内容</a>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a href="#top" class="brand"><img src="avatar.jpg" width="28" height="28" alt="">a8.baby</a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="#llmchain">LLMChain</a>
+      <a href="#now">现在</a>
+      <a href="#path">经历</a>
+      <a href="#repos">开源</a>
+      <a href="#stack">技术栈</a>
+      <a href="#contact">联系</a>
+    </nav>
+    <div class="nav-right">
+      <a href="https://github.com/hellojun" class="btn btn-ghost btn-sm" target="_blank" rel="noopener noreferrer">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-.9-2.6c3.1-.3 6.4-1.5 6.4-6.9a5.4 5.4 0 0 0-1.5-3.7 5 5 0 0 0-.1-3.7s-1.2-.3-3.9 1.4a13.4 13.4 0 0 0-7 0C6.3 .8 5.1 1.1 5.1 1.1a5 5 0 0 0-.1 3.7A5.4 5.4 0 0 0 3.5 8.5c0 5.4 3.3 6.6 6.4 6.9a3.4 3.4 0 0 0-.9 2.6V22"/></svg>
+        @hellojun
+      </a>
+      <button type="button" class="menu-btn" id="menuBtn" aria-label="打开菜单" aria-expanded="false" aria-controls="menuPanel">
+        <svg class="ic-open" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="ic-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav class="menu-panel" id="menuPanel" aria-label="移动端导航">
+    <a href="#llmchain"><span>LLMChain</span><span class="n">01</span></a>
+    <a href="#now"><span>现在</span><span class="n">02</span></a>
+    <a href="#path"><span>经历</span><span class="n">03</span></a>
+    <a href="#repos"><span>开源</span><span class="n">04</span></a>
+    <a href="#stack"><span>技术栈</span><span class="n">05</span></a>
+    <a href="#contact"><span>联系</span><span class="n">06</span></a>
+  </nav>
 </header>
 
-<main id="main">
-<div class="wrap hero" id="top">
-<p class="eyebrow">hellojun · GitHub 2013 年至今</p>
-<h1>我是 Jun，一个一直在写代码的人。</h1>
-<p class="lead">多年交易所钱包、做市与风控系统经验。近两年关注 AI 与 Crypto 的结合，做过 Agent 自主下注、对战与结算，以及 AI 参与盘口分析的尝试。当前方向是 LLMChain：聚合闲置的大模型算力上链供 Agent 调用，并为每次调用生成可验证凭证。</p>
-<div class="cta">
-<a class="btn btn-primary" href="https://github.com/hellojun" target="_blank" rel="noopener noreferrer">GitHub @hellojun</a>
-<a class="btn btn-ghost" href="#timeline">看看这些年做了什么</a>
-</div>
-<div class="stats"><span><b>200+</b> 个仓库</span><span><b>14</b> 个组织</span><span>主要写 <b>Go · Python · TypeScript</b></span></div>
-</div>
+<main id="top">
+  <!-- 首屏 -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-text">
+        <div class="hero-top">
+          <span class="eyebrow">HELLOJUN · GITHUB 2013 年至今</span>
+          <a href="#llmchain" class="live"><span class="dot"></span>正在做 LLMChain · 2026.10</a>
+        </div>
+        <h1>我是 Jun，<br>一个一直在写代码的人。</h1>
+        <p class="lede">多年交易所钱包、做市与风控系统经验。近两年关注 AI 与 Crypto 的结合，做过 Agent 自主下注、对战与结算，以及 AI 参与盘口分析的尝试。当前方向是 LLMChain：聚合闲置的大模型算力上链供 Agent 调用，并为每次调用生成可验证凭证。</p>
+        <div class="cta">
+          <a href="#llmchain" class="btn btn-primary">看 LLMChain
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="#path" class="btn btn-ghost">看看这些年做了什么</a>
+        </div>
+        <div class="stats">
+          <div class="stat"><b>200+</b><span>个仓库</span></div>
+          <div class="stat"><b>14</b><span>个组织</span></div>
+          <div class="stat"><b>Go · Py · TS</b><span>主要语言</span></div>
+        </div>
+      </div>
 
-<section class="alt" id="now">
-<div class="wrap">
-<div class="sec-head reveal"><h2>现在在做</h2></div>
-<aside class="feat reveal in" aria-labelledby="feat-h">
-<div class="feat-head"><span class="tag">新项目 · 欢迎参与</span><span class="feat-date">2026 年 10 月</span></div>
-<h2 id="feat-h">LLMChain：把闲散的大模型聚到链上，给 Agent 用</h2>
-<p class="feat-lead">世界上有大量闲着的 GPU 和自己托管的开源模型，也有越来越多的 Agent 一天要发起成千上万次推理调用。LLMChain 是一条独立公链，把这两头接起来：谁有模型谁就能上链挂单，Agent 按模型、价格、证明等级直接挑选并付款，每一次调用都生成一张可验证的收据（VSR），收据即结算。人类交易靠发票，Agent 交易靠 VSR。</p>
-<ul class="feat-points">
-<li><b>供给：闲散模型上链</b>普通 GPU 自托管开源权重即可挂单，无需许可；链上挂单簿持久有效，写明模型、单价、容量和证明等级。</li>
-<li><b>需求：Agent 直连，毫秒级</b>Agent 查挂单簿选服务商，用 x402 开支付通道，链下当场接单执行，不等区块确认，只有结算上链。</li>
-<li><b>凭证：收据即结算</b>每一次完成的推理调用生成一张 VSR 收据，它是唯一上链的对象，资金按收据结算，没有平台托管。</li>
-<li><b>信任：造假不划算</b>隐蔽挑战、分级保真证明、质押罚没，让挂旗舰模型却偷换小模型这种事在经济上亏本。</li>
-</ul>
-<p class="feat-call">基金会只做足够薄的验证与结算底座，分账、路由这些生态逻辑交给社区在合约层演进。白皮书 v1.1 刚放出来，还有不少【待定】。如果你手里有闲着的 GPU，或者对可验证推理、支付通道、TEE、zkML 有想法，欢迎来提 issue、挑毛病、一起把它做出来。</p>
-<div class="cta">
-<a class="btn btn-primary" href="https://github.com/hellojun/LLMChain" target="_blank" rel="noopener noreferrer">GitHub · hellojun/LLMChain</a>
-<a class="btn btn-ghost" href="https://github.com/hellojun/LLMChain/blob/main/LLMChain-Whitepaper-v1.1-20261012.pdf" target="_blank" rel="noopener noreferrer">读白皮书（PDF）</a>
-</div>
-</aside>
-<h3 class="sub reveal">2026 年提交最多的几件事</h3>
-<div class="now">
-<article class="card reveal">
-<p><span class="tag">AI Agent</span><span class="tag">预测市场</span><span class="tag dim">Python · Vue</span></p>
-<h3>PolySport</h3>
-<p>多智能体辩论的体育预测引擎：7 个带不同认知偏差的 AI 分析师辩论 3 轮，结合 Zep 知识图谱和 Polymarket 链上聪明钱，给出胜负、让分、总分的预测。</p>
-<a class="more" href="https://github.com/hellojun/PolySport" target="_blank" rel="noopener noreferrer">github.com/hellojun/PolySport →</a>
-</article>
-<article class="card reveal">
-<p><span class="tag">Agent 协议</span><span class="tag">Base · USDC</span><span class="tag dim">TypeScript</span></p>
-<h3>Bout — Open Agent Gaming Protocol</h3>
-<p>给 AI Agent 用的开放对战协议：任何 Agent 读一份 Skill 文件就能注册、下注、对战、结算，用 x402 走 HTTP 付款，协议本身不托管私钥。游戏开发者提交新玩法可长期分成。</p>
-<a class="more" href="https://github.com/hellojun/bout.network" target="_blank" rel="noopener noreferrer">github.com/hellojun/bout.network →</a>
-</article>
-<article class="card reveal">
-<p><span class="tag">Chrome 扩展</span><span class="tag">DeFi</span><span class="tag dim">TypeScript · Solidity</span></p>
-<h3>KPAX Ball</h3>
-<p>在 Polymarket 看足球盘口时自动识别比赛，侧边栏给出多专家辩论式分析；另一条线是拿 Polymarket 仓位抵押借 USDC，AI 给建议 LTV，开赛前自动平仓。</p>
-<a class="more" href="https://github.com/hellojun/kpax-ball" target="_blank" rel="noopener noreferrer">github.com/hellojun/kpax-ball →</a>
-</article>
-<article class="card reveal">
-<p><span class="tag">做市 · 量化</span><span class="tag dim">Go · Python</span></p>
-<h3>做市与多因子系统</h3>
-<p>一套 Go 写的做市机器人集群（报价、对冲、套利、自成交、风控、告警），以及一套 Python 多因子回测与执行系统的集成。团队项目，我负责整体和集成。</p>
-</article>
-</div>
-</div>
-</section>
+      <div class="hero-receipt">
+        <div class="receipt" id="receipt" aria-live="polite">
+          <div class="row"><span class="hd">LLMCHAIN · VSR</span><span class="id" data-f="id">#0000 0001</span></div>
+          <div class="row"><span class="ttl">可验证推理收据</span><span class="sample">示例</span></div>
+          <div class="dash"></div>
+          <dl>
+            <div><dt>模型</dt><dd data-f="model">llama-3.1-70b</dd></div>
+            <div><dt>调用方</dt><dd data-f="agent">agent:0x7a…c3</dd></div>
+            <div><dt>服务商</dt><dd data-f="node">node:0x19…e8</dd></div>
+            <div><dt>Tokens</dt><dd data-f="tokens">1,024 / 512</dd></div>
+            <div><dt>证明等级</dt><dd data-f="proof">L2 · TEE</dd></div>
+            <div><dt>支付通道</dt><dd>x402</dd></div>
+          </dl>
+          <div class="dash"></div>
+          <div class="row"><span class="id">应付</span><span class="amount" data-f="amount">0.0012 USDC</span></div>
+          <div class="row"><span class="note" data-f="note">收据即结算 · 无平台托管</span><span class="badge" data-f="badge">SETTLED</span></div>
+        </div>
+        <button type="button" class="btn btn-ghost btn-sm" id="issueBtn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.3-5.7M20 4v5h-5"/></svg>
+          <span>再开一张收据</span>
+        </button>
+      </div>
+    </div>
+  </section>
 
-<section id="timeline">
-<div class="wrap">
-<div class="sec-head reveal"><h2>这些年的路</h2><p>按 GitHub 上的提交和仓库整理，大致是这样走过来的。</p></div>
-<ol class="tl">
-<li class="reveal"><span class="y">2019</span><div><h3>从钱包开始</h3><p>写了第一个公开项目 usdt_wallet，给 EOS token 列表提过 PR。那时候就对「钱怎么在链上安全地动」感兴趣。</p></div></li>
-<li class="reveal"><span class="y">2020</span><div><h3>做了一阵传统业务</h3><p>给一家摄影品牌做微信 Native 支付和智能影棚系统。</p></div></li>
-<li class="reveal"><span class="y">2021–2022</span><div><h3>NFT 与游戏</h3><p>参与 1Box NFT 平台、Xoasis NFT 市场（含给 Unreal Engine 用的以太坊钱包 SDK）和 gamelink 链游项目。</p></div></li>
-<li class="reveal"><span class="y">2022–2023</span><div><h3>交易所级钱包系统</h3><p>发起 ex-wallet：Go 写的完整钱包后端，含充提、签名服务、风控服务、MPC 与 KMS、BTC/ETH/BSC/TRON/XRP 节点接入、运营后台。官网和部分后台 API 是我自己写的。</p></div></li>
-<li class="reveal"><span class="y">2023</span><div><h3>应用链与 DeFi</h3><p>用 Cosmos SDK 做了游戏应用链 gchain，拿到 Cosmos 香港加速器中文开发培训第 2 期黑客松第一名。同期发起 GreatGainGo，做预言机合约与节点。</p></div></li>
-<li class="reveal"><span class="y">2023 末–2024</span><div><h3>铭文那一波</h3><p>写了 Celestia、IoTeX、Cosmos 的铭文工具，发起 CelestLoan 和铭文市场项目。还写了个每秒盯币安上币公告、自动在 OKX 开多的小工具，意外成了我星星最多的仓库。</p></div></li>
-<li class="reveal"><span class="y">2024 末–2025</span><div><h3>Meme 交易与 AI 入门</h3><p>发起 memes-ai：微服务架构的多链 Meme 币交易平台（ETH/BSC/Base/Solana/Tron，带 MEV 保护）。同时写 Solana 节点服务、交易助手 TradeGPT，以及两个德州扑克 AI（一个用 LangChain，一个用 Claude API）。</p></div></li>
-<li class="reveal"><span class="y">2026</span><div><h3>Agent × 链</h3><p>PolySport、Bout 协议、KPAX Ball，以及做市与多因子量化系统。10 月发布 LLMChain 白皮书：聚合闲置的大模型算力上链供 Agent 调用。</p></div></li>
-</ol>
-</div>
-</section>
+  <!-- 01 LLMChain -->
+  <section id="llmchain" class="section alt">
+    <div class="wrap stack" style="gap:48px">
+      <div class="feature-head reveal">
+        <div class="meta">
+          <span class="eyebrow">01 · 现在在做</span>
+          <span class="chip hi">新项目 · 欢迎参与</span>
+          <span class="chip">2026 年 10 月</span>
+        </div>
+        <h2>LLMChain：把闲散的大模型聚到链上，给 Agent 用</h2>
+        <p>世界上有大量闲着的 GPU 和自己托管的开源模型，也有越来越多的 Agent 一天要发起成千上万次推理调用。LLMChain 是一条独立公链，把这两头接起来：谁有模型谁就能上链挂单，Agent 按模型、价格、证明等级直接挑选并付款，每一次调用都生成一张可验证的收据（VSR），收据即结算。人类交易靠发票，Agent 交易靠 VSR。</p>
+      </div>
+      <div class="g4">
+        <article class="card pillar reveal">
+          <div class="top"><span class="idx">01 / 供给</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01M7 17h.01"/></svg></div>
+          <h3>闲散模型上链</h3>
+          <p>普通 GPU 自托管开源权重即可挂单，无需许可；链上挂单簿持久有效，写明模型、单价、容量和证明等级。</p>
+        </article>
+        <article class="card pillar reveal">
+          <div class="top"><span class="idx">02 / 需求</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg></div>
+          <h3>Agent 直连，毫秒级</h3>
+          <p>Agent 查挂单簿选服务商，用 x402 开支付通道，链下当场接单执行，不等区块确认，只有结算上链。</p>
+        </article>
+        <article class="card pillar reveal">
+          <div class="top"><span class="idx">03 / 凭证</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 2h12v20l-3-2-3 2-3-2-3 2V2z"/><path d="M9 8h6M9 12h6"/></svg></div>
+          <h3>收据即结算</h3>
+          <p>每一次完成的推理调用生成一张 VSR 收据，它是唯一上链的对象，资金按收据结算，没有平台托管。</p>
+        </article>
+        <article class="card pillar reveal">
+          <div class="top"><span class="idx">04 / 信任</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <h3>造假不划算</h3>
+          <p>隐蔽挑战、分级保真证明、质押罚没，让挂旗舰模型却偷换小模型这种事在经济上亏本。</p>
+        </article>
+      </div>
+      <div class="callout reveal">
+        <p>基金会只做足够薄的验证与结算底座，分账、路由这些生态逻辑交给社区在合约层演进。白皮书 v1.1 刚放出来，还有不少【待定】。如果你手里有闲着的 GPU，或者对可验证推理、支付通道、TEE、zkML 有想法，欢迎来提 issue、挑毛病、一起把它做出来。</p>
+        <div class="cta">
+          <a href="https://github.com/hellojun/LLMChain" class="btn btn-primary" target="_blank" rel="noopener noreferrer">GitHub · hellojun/LLMChain</a>
+          <a href="https://github.com/hellojun/LLMChain/blob/main/LLMChain-Whitepaper-v1.1-20261012.pdf" class="btn btn-ghost" target="_blank" rel="noopener noreferrer">读白皮书（PDF）</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<section class="alt" id="open">
-<div class="wrap">
-<div class="sec-head reveal"><h2>公开仓库</h2><p>可以直接看代码的几个。</p></div>
-<div class="proj">
-<article class="card reveal"><p><span class="tag">白皮书</span><span class="tag dim">欢迎参与</span></p><h3>LLMChain</h3><p>把闲置的大模型算力聚合上链供 Agent 调用，每次调用生成可验证收据（VSR）并原生结算的独立公链。</p><a class="more" href="https://github.com/hellojun/LLMChain" target="_blank" rel="noopener noreferrer">查看仓库 →</a></article>
-<article class="card reveal"><p><span class="tag dim">Python · Vue</span></p><h3>PolySport</h3><p>多智能体辩论 × 知识图谱 × 链上聪明钱的体育预测引擎。</p><a class="more" href="https://github.com/hellojun/PolySport" target="_blank" rel="noopener noreferrer">查看仓库 →</a></article>
-<article class="card reveal"><p><span class="tag dim">TypeScript</span></p><h3>bout.network</h3><p>Open Agent Gaming Protocol。Hono + Next.js + Drizzle 的 monorepo，合约为 USDC 托管与结算。</p><a class="more" href="https://github.com/hellojun/bout.network" target="_blank" rel="noopener noreferrer">查看仓库 →</a></article>
-<article class="card reveal"><p><span class="tag dim">TypeScript</span></p><h3>bout-game-gomoku</h3><p>Bout 协议外部游戏服务器的参考实现：实现 IGame，包一层 HTTP，注册到协议。</p><a class="more" href="https://github.com/hellojun/bout-game-gomoku" target="_blank" rel="noopener noreferrer">查看仓库 →</a></article>
-<article class="card reveal"><p><span class="tag dim">TypeScript · Python · Solidity</span></p><h3>kpax-ball</h3><p>Polymarket 足球盘口 AI 分析扩展，带仓位抵押借贷合约（Foundry，UUPS 可升级）。</p><a class="more" href="https://github.com/hellojun/kpax-ball" target="_blank" rel="noopener noreferrer">查看仓库 →</a></article>
-<article class="card reveal"><p><span class="tag dim">TypeScript</span><span class="tag">7 ★ · 13 fork</span></p><h3>binance-announments</h3><p>每秒拉取币安公告，识别永续合约上新，自动在 OKX 下多单。</p><a class="more" href="https://github.com/hellojun/binance-announments" target="_blank" rel="noopener noreferrer">查看仓库 →</a></article>
-<article class="card reveal"><p><span class="tag dim">Go · Cosmos SDK</span><span class="tag">黑客松第一</span></p><h3>gchain</h3><p>Cosmos SDK 游戏应用链，CHA 中文开发培训第 2 期黑客松第一名。</p><a class="more" href="https://github.com/hellojun/gchain" target="_blank" rel="noopener noreferrer">查看仓库 →</a></article>
-<article class="card reveal"><p><span class="tag dim">JavaScript</span></p><h3>usdt_wallet</h3><p>2019 年的 USDT 钱包，一切的起点。</p><a class="more" href="https://github.com/hellojun/usdt_wallet" target="_blank" rel="noopener noreferrer">查看仓库 →</a></article>
-</div>
-</div>
-</section>
+  <!-- 02 2026 项目 -->
+  <section id="now" class="section">
+    <div class="wrap stack" style="gap:40px">
+      <div class="section-head reveal">
+        <span class="eyebrow">02 · 2026 年提交最多的几件事</span>
+        <h2>Agent × 链，今年的四条线</h2>
+      </div>
+      <div class="g2" style="gap:24px">
+        <article class="card proj reveal">
+          <div class="tags"><span class="chip">AI Agent</span><span class="chip">预测市场</span><span class="chip">Python · Vue</span></div>
+          <h3>PolySport</h3>
+          <p>多智能体辩论的体育预测引擎：7 个带不同认知偏差的 AI 分析师辩论 3 轮，结合 Zep 知识图谱和 Polymarket 链上聪明钱，给出胜负、让分、总分的预测。</p>
+          <a href="https://github.com/hellojun/PolySport" class="repo-link" target="_blank" rel="noopener noreferrer">github.com/hellojun/PolySport →</a>
+        </article>
+        <article class="card proj reveal">
+          <div class="tags"><span class="chip">Agent 协议</span><span class="chip">Base · USDC</span><span class="chip">TypeScript</span></div>
+          <h3>Bout — Open Agent Gaming Protocol</h3>
+          <p>给 AI Agent 用的开放对战协议：任何 Agent 读一份 Skill 文件就能注册、下注、对战、结算，用 x402 走 HTTP 付款，协议本身不托管私钥。游戏开发者提交新玩法可长期分成。</p>
+          <a href="https://github.com/hellojun/bout.network" class="repo-link" target="_blank" rel="noopener noreferrer">github.com/hellojun/bout.network →</a>
+        </article>
+        <article class="card proj reveal">
+          <div class="tags"><span class="chip">Chrome 扩展</span><span class="chip">DeFi</span><span class="chip">TypeScript · Solidity</span></div>
+          <h3>KPAX Ball</h3>
+          <p>在 Polymarket 看足球盘口时自动识别比赛，侧边栏给出多专家辩论式分析；另一条线是拿 Polymarket 仓位抵押借 USDC，AI 给建议 LTV，开赛前自动平仓。</p>
+          <a href="https://github.com/hellojun/kpax-ball" class="repo-link" target="_blank" rel="noopener noreferrer">github.com/hellojun/kpax-ball →</a>
+        </article>
+        <article class="card proj reveal">
+          <div class="tags"><span class="chip">做市 · 量化</span><span class="chip">Go · Python</span></div>
+          <h3>做市与多因子系统</h3>
+          <p>一套 Go 写的做市机器人集群（报价、对冲、套利、自成交、风控、告警），以及一套 Python 多因子回测与执行系统的集成。团队项目，我负责整体和集成。</p>
+          <span class="private"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>团队项目 · 未公开</span>
+        </article>
+      </div>
+    </div>
+  </section>
 
-<section id="stack">
-<div class="wrap two">
-<div class="reveal">
-<div class="sec-head"><h2>常用的东西</h2><p>按个人与组织仓库的主语言统计。</p></div>
-<ul class="langs" aria-label="仓库主语言分布">
-<li><span>Go</span><span class="bar"><i style="--w:100%"></i></span><span class="n">47</span></li>
-<li><span>Python</span><span class="bar"><i style="--w:81%"></i></span><span class="n">38</span></li>
-<li><span>TypeScript</span><span class="bar"><i style="--w:68%"></i></span><span class="n">32</span></li>
-<li><span>JavaScript</span><span class="bar"><i style="--w:53%"></i></span><span class="n">25</span></li>
-<li><span>Vue</span><span class="bar"><i style="--w:32%"></i></span><span class="n">15</span></li>
-<li><span>Solidity</span><span class="bar"><i style="--w:19%"></i></span><span class="n">9</span></li>
-<li><span>Java</span><span class="bar"><i style="--w:15%"></i></span><span class="n">7</span></li>
-<li><span>Rust</span><span class="bar"><i style="--w:6%"></i></span><span class="n">3</span></li>
-</ul>
-</div>
-<div class="stack reveal">
-<h3>链</h3><p>Bitcoin · Ethereum · BSC · Base · Solana · Tron · Sui · Cosmos SDK · Celestia</p>
-<h3>合约与钱包</h3><p>Solidity · Foundry · Hardhat · viem · MPC · KMS · 多链签名与归集</p>
-<h3>后端</h3><p>Go · FastAPI · NestJS · Hono · Fastify · PostgreSQL · MySQL · Redis · BullMQ · Docker</p>
-<h3>前端</h3><p>React · Next.js · Vue 3 · Vite · Tailwind · Chrome 扩展（MV3）</p>
-<h3>AI</h3><p>Claude · Gemini · DeepSeek · LangChain · Google ADK · Zep GraphRAG · 多 Agent 编排</p>
-</div>
-</div>
-</section>
+  <!-- 03 时间线 -->
+  <section id="path" class="section alt">
+    <div class="wrap stack" style="gap:40px">
+      <div class="section-head reveal" style="max-width:720px">
+        <span class="eyebrow">03 · 这些年的路</span>
+        <h2>按 GitHub 上的提交和仓库整理，大致是这样走过来的。</h2>
+      </div>
+      <div class="tl">
+        <ul>
+          <li class="reveal"><span class="y">2019</span><div><h3>从钱包开始</h3><p>写了第一个公开项目 usdt_wallet，给 EOS token 列表提过 PR。那时候就对「钱怎么在链上安全地动」感兴趣。</p></div></li>
+          <li class="reveal"><span class="y">2020</span><div><h3>做了一阵传统业务</h3><p>给一家摄影品牌做微信 Native 支付和智能影棚系统。</p></div></li>
+          <li class="reveal"><span class="y">2021–22</span><div><h3>NFT 与游戏</h3><p>参与 1Box NFT 平台、Xoasis NFT 市场（含给 Unreal Engine 用的以太坊钱包 SDK）和 gamelink 链游项目。</p></div></li>
+          <li class="reveal"><span class="y">2022–23</span><div><h3>交易所级钱包系统</h3><p>发起 ex-wallet：Go 写的完整钱包后端，含充提、签名服务、风控服务、MPC 与 KMS、BTC/ETH/BSC/TRON/XRP 节点接入、运营后台。官网和部分后台 API 是我自己写的。</p></div></li>
+          <li class="reveal"><span class="y">2023</span><div><h3>应用链与 DeFi</h3><p>用 Cosmos SDK 做了游戏应用链 gchain，拿到 Cosmos 香港加速器中文开发培训第 2 期黑客松第一名。同期发起 GreatGainGo，做预言机合约与节点。</p></div></li>
+          <li class="reveal"><span class="y">2023–24</span><div><h3>铭文那一波</h3><p>写了 Celestia、IoTeX、Cosmos 的铭文工具，发起 CelestLoan 和铭文市场项目。还写了个每秒盯币安上币公告、自动在 OKX 开多的小工具，意外成了我星星最多的仓库。</p></div></li>
+          <li class="reveal"><span class="y">2024–25</span><div><h3>Meme 交易与 AI 入门</h3><p>发起 memes-ai：微服务架构的多链 Meme 币交易平台（ETH/BSC/Base/Solana/Tron，带 MEV 保护）。同时写 Solana 节点服务、交易助手 TradeGPT，以及两个德州扑克 AI（一个用 LangChain，一个用 Claude API）。</p></div></li>
+          <li class="reveal"><span class="y">2026</span><div><h3>Agent × 链</h3><p>PolySport、Bout 协议、KPAX Ball，以及做市与多因子量化系统。10 月发布 LLMChain 白皮书：聚合闲置的大模型算力上链供 Agent 调用。</p></div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-<section class="alt contact" id="contact">
-<div class="wrap">
-<h2>想聊聊？</h2>
-<p>代码在 GitHub，人在 Telegram。</p>
-<div class="cta">
-<a class="btn btn-primary" href="https://github.com/hellojun" target="_blank" rel="noopener noreferrer">GitHub @hellojun</a>
-<a class="btn btn-ghost" href="https://t.me/Jun0bj" target="_blank" rel="noopener noreferrer">Telegram @Jun0bj</a>
-</div>
-</div>
-</section>
+  <!-- 04 公开仓库 -->
+  <section id="repos" class="section">
+    <div class="wrap stack" style="gap:32px">
+      <div class="repos-head reveal">
+        <div class="section-head">
+          <span class="eyebrow">04 · 公开仓库</span>
+          <h2>可以直接看代码的几个</h2>
+        </div>
+        <a href="https://github.com/hellojun?tab=repositories" class="btn btn-ghost" target="_blank" rel="noopener noreferrer">全部仓库 →</a>
+      </div>
+      <div class="filters reveal" role="group" aria-label="按语言筛选" id="filters">
+        <button type="button" class="filter" data-lang="all" aria-pressed="true">全部</button>
+        <button type="button" class="filter" data-lang="Go" aria-pressed="false">Go</button>
+        <button type="button" class="filter" data-lang="Python" aria-pressed="false">Python</button>
+        <button type="button" class="filter" data-lang="TypeScript" aria-pressed="false">TypeScript</button>
+        <button type="button" class="filter" data-lang="Solidity" aria-pressed="false">Solidity</button>
+        <button type="button" class="filter" data-lang="JavaScript" aria-pressed="false">JavaScript</button>
+        <span class="count" id="repoCount">8 个</span>
+      </div>
+      <div class="g4" id="repoGrid">
+        <article class="card featured reveal" data-langs="">
+          <div class="tags"><span class="chip hi">白皮书</span><span class="chip">欢迎参与</span></div>
+          <h3>LLMChain</h3>
+          <p style="flex:1">把闲置的大模型算力聚合上链供 Agent 调用，每次调用生成可验证收据（VSR）并原生结算的独立公链。</p>
+          <a href="https://github.com/hellojun/LLMChain" class="repo-link" target="_blank" rel="noopener noreferrer">查看仓库 →</a>
+        </article>
+        <article class="card reveal" data-langs="Python Vue">
+          <div class="tags"><span class="chip">Python · Vue</span></div>
+          <h3>PolySport</h3>
+          <p style="flex:1">多智能体辩论 × 知识图谱 × 链上聪明钱的体育预测引擎。</p>
+          <a href="https://github.com/hellojun/PolySport" class="repo-link" target="_blank" rel="noopener noreferrer">查看仓库 →</a>
+        </article>
+        <article class="card reveal" data-langs="TypeScript">
+          <div class="tags"><span class="chip">TypeScript</span></div>
+          <h3>bout.network</h3>
+          <p style="flex:1">Open Agent Gaming Protocol。Hono + Next.js + Drizzle 的 monorepo，合约为 USDC 托管与结算。</p>
+          <a href="https://github.com/hellojun/bout.network" class="repo-link" target="_blank" rel="noopener noreferrer">查看仓库 →</a>
+        </article>
+        <article class="card reveal" data-langs="TypeScript">
+          <div class="tags"><span class="chip">TypeScript</span></div>
+          <h3>bout-game-gomoku</h3>
+          <p style="flex:1">Bout 协议外部游戏服务器的参考实现：实现 IGame，包一层 HTTP，注册到协议。</p>
+          <a href="https://github.com/hellojun/bout-game-gomoku" class="repo-link" target="_blank" rel="noopener noreferrer">查看仓库 →</a>
+        </article>
+        <article class="card reveal" data-langs="TypeScript Python Solidity">
+          <div class="tags"><span class="chip">TypeScript · Python · Solidity</span></div>
+          <h3>kpax-ball</h3>
+          <p style="flex:1">Polymarket 足球盘口 AI 分析扩展，带仓位抵押借贷合约（Foundry，UUPS 可升级）。</p>
+          <a href="https://github.com/hellojun/kpax-ball" class="repo-link" target="_blank" rel="noopener noreferrer">查看仓库 →</a>
+        </article>
+        <article class="card reveal" data-langs="TypeScript">
+          <div class="tags"><span class="chip">TypeScript</span><span class="chip">7 ★ · 13 fork</span></div>
+          <h3>binance-announments</h3>
+          <p style="flex:1">每秒拉取币安公告，识别永续合约上新，自动在 OKX 下多单。</p>
+          <a href="https://github.com/hellojun/binance-announments" class="repo-link" target="_blank" rel="noopener noreferrer">查看仓库 →</a>
+        </article>
+        <article class="card reveal" data-langs="Go">
+          <div class="tags"><span class="chip">Go · Cosmos SDK</span><span class="chip">黑客松第一</span></div>
+          <h3>gchain</h3>
+          <p style="flex:1">Cosmos SDK 游戏应用链，CHA 中文开发培训第 2 期黑客松第一名。</p>
+          <a href="https://github.com/hellojun/gchain" class="repo-link" target="_blank" rel="noopener noreferrer">查看仓库 →</a>
+        </article>
+        <article class="card reveal" data-langs="JavaScript">
+          <div class="tags"><span class="chip">JavaScript</span></div>
+          <h3>usdt_wallet</h3>
+          <p style="flex:1">2019 年的 USDT 钱包，一切的起点。</p>
+          <a href="https://github.com/hellojun/usdt_wallet" class="repo-link" target="_blank" rel="noopener noreferrer">查看仓库 →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 技术栈 -->
+  <section id="stack" class="section alt">
+    <div class="wrap stack" style="gap:40px">
+      <div class="section-head reveal">
+        <span class="eyebrow">05 · 常用的东西</span>
+        <h2>按个人与组织仓库的主语言统计</h2>
+      </div>
+      <div class="g2" style="gap:48px;align-items:start">
+        <div class="langs reveal" id="langs">
+          <div class="lang"><span>Go</span><div class="track"><div class="bar" data-w="100"></div></div><span class="n">47</span></div>
+          <div class="lang"><span>Python</span><div class="track"><div class="bar" data-w="81"></div></div><span class="n">38</span></div>
+          <div class="lang"><span>TypeScript</span><div class="track"><div class="bar" data-w="68"></div></div><span class="n">32</span></div>
+          <div class="lang"><span>JavaScript</span><div class="track"><div class="bar" data-w="53"></div></div><span class="n">25</span></div>
+          <div class="lang"><span>Vue</span><div class="track"><div class="bar" data-w="32"></div></div><span class="n">15</span></div>
+          <div class="lang"><span>Solidity</span><div class="track"><div class="bar" data-w="19"></div></div><span class="n">9</span></div>
+          <div class="lang"><span>Java</span><div class="track"><div class="bar" data-w="15"></div></div><span class="n">7</span></div>
+          <div class="lang"><span>Rust</span><div class="track"><div class="bar" data-w="6"></div></div><span class="n">3</span></div>
+          <p class="foot">仓库数 · 含个人与组织</p>
+        </div>
+        <dl class="stacks reveal">
+          <div><dt>链</dt><dd>Bitcoin · Ethereum · BSC · Base · Solana · Tron · Sui · Cosmos SDK · Celestia</dd></div>
+          <div><dt>合约与钱包</dt><dd>Solidity · Foundry · Hardhat · viem · MPC · KMS · 多链签名与归集</dd></div>
+          <div><dt>后端</dt><dd>Go · FastAPI · NestJS · Hono · Fastify · PostgreSQL · MySQL · Redis · BullMQ · Docker</dd></div>
+          <div><dt>前端</dt><dd>React · Next.js · Vue 3 · Vite · Tailwind · Chrome 扩展（MV3）</dd></div>
+          <div><dt>AI</dt><dd>Claude · Gemini · DeepSeek · LangChain · Google ADK · Zep GraphRAG · 多 Agent 编排</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 联系 -->
+  <section id="contact" class="section contact">
+    <div class="wrap">
+      <span class="eyebrow">06 · 联系</span>
+      <h2>想聊聊？</h2>
+      <p class="lede">代码在 GitHub，人在 Telegram。</p>
+      <div class="cta">
+        <a href="https://github.com/hellojun" class="btn btn-primary" target="_blank" rel="noopener noreferrer">GitHub @hellojun</a>
+        <a href="https://t.me/Jun0bj" class="btn btn-ghost" target="_blank" rel="noopener noreferrer">Telegram @Jun0bj</a>
+        <button type="button" class="btn btn-ghost" id="copyBtn" aria-live="polite">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+          <span>复制 Telegram</span>
+        </button>
+      </div>
+    </div>
+  </section>
 </main>
 
-<footer><div class="wrap"><span>© 2026 a8.baby</span><span>内容整理自 <a href="https://github.com/hellojun" target="_blank" rel="noopener noreferrer">GitHub</a> · 香港 · 新加坡</span></div></footer>
+<footer>
+  <div class="wrap">
+    <span>a8.baby · Jun</span>
+    <div class="r">
+      <span>GitHub 2013 年至今 · 2026</span>
+      <a href="#top">回到顶部<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg></a>
+    </div>
+  </div>
+</footer>
 
 <script>
 (function(){
-const t=document.querySelector('[data-theme-toggle]'),r=document.documentElement;
-const sun='<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>';
-const moon='<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
-let d=matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';
-function apply(){r.setAttribute('data-theme',d);t.innerHTML=d==='dark'?sun:moon;t.setAttribute('aria-label',d==='dark'?'切换浅色模式':'切换深色模式')}
-apply();t.addEventListener('click',()=>{d=d==='dark'?'light':'dark';apply()});
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  var $ = function(s, r){ return (r || document).querySelector(s); };
+  var $$ = function(s, r){ return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+
+  // 移动端菜单
+  var menuBtn = $('#menuBtn'), panel = $('#menuPanel');
+  function setMenu(open){
+    panel.classList.toggle('open', open);
+    menuBtn.setAttribute('aria-expanded', String(open));
+    menuBtn.setAttribute('aria-label', open ? '关闭菜单' : '打开菜单');
+  }
+  menuBtn.addEventListener('click', function(){ setMenu(!panel.classList.contains('open')); });
+  $$('a', panel).forEach(function(a){ a.addEventListener('click', function(){ setMenu(false); }); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && panel.classList.contains('open')) { setMenu(false); menuBtn.focus(); } });
+
+  // 收据示例：再开一张 → PENDING → SETTLED
+  var samples = [
+    { id:'#0000 0001', model:'llama-3.1-70b', agent:'agent:0x7a…c3', node:'node:0x19…e8', tokens:'1,024 / 512',   proof:'L2 · TEE',  amount:'0.0012 USDC' },
+    { id:'#0000 0002', model:'qwen2.5-72b',   agent:'agent:0x3f…91', node:'node:0xb4…07', tokens:'2,048 / 1,024', proof:'L1 · 抽检', amount:'0.0019 USDC' },
+    { id:'#0000 0003', model:'deepseek-v3',   agent:'agent:0x7a…c3', node:'node:0x5c…2d', tokens:'512 / 256',     proof:'L3 · zkML', amount:'0.0008 USDC' },
+    { id:'#0000 0004', model:'mistral-large', agent:'agent:0xe1…4a', node:'node:0x19…e8', tokens:'4,096 / 2,048', proof:'L2 · TEE',  amount:'0.0041 USDC' }
+  ];
+  var receipt = $('#receipt'), issueBtn = $('#issueBtn'), ix = 0, pending = false;
+  function field(name){ return $('[data-f="' + name + '"]', receipt); }
+  function render(s, isPending){
+    ['id','model','agent','node','tokens','proof','amount'].forEach(function(k){ field(k).textContent = s[k]; });
+    field('note').textContent = isPending ? '链下执行中 · 等待收据' : '收据即结算 · 无平台托管';
+    var b = field('badge'); b.textContent = isPending ? 'PENDING' : 'SETTLED'; b.classList.toggle('pending', isPending);
+  }
+  issueBtn.addEventListener('click', function(){
+    if (pending) return;
+    pending = true; ix = (ix + 1) % samples.length;
+    issueBtn.disabled = true; $('span', issueBtn).textContent = '开票中…';
+    render(samples[ix], true);
+    setTimeout(function(){
+      render(samples[ix], false);
+      receipt.classList.remove('flash'); void receipt.offsetWidth; receipt.classList.add('flash');
+      pending = false; issueBtn.disabled = false; $('span', issueBtn).textContent = '再开一张收据';
+    }, 900);
+  });
+
+  // 仓库按语言筛选
+  var filters = $$('.filter', $('#filters')), cards = $$('#repoGrid .card'), countEl = $('#repoCount');
+  filters.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var lang = btn.getAttribute('data-lang'), n = 0;
+      filters.forEach(function(b){ b.setAttribute('aria-pressed', String(b === btn)); });
+      cards.forEach(function(c){
+        var langs = (c.getAttribute('data-langs') || '').split(' ');
+        var show = lang === 'all' || langs.indexOf(lang) >= 0;
+        c.classList.toggle('hidden', !show); if (show) n++;
+      });
+      countEl.textContent = n + ' 个';
+    });
+  });
+
+  // 复制 Telegram
+  var copyBtn = $('#copyBtn');
+  copyBtn.addEventListener('click', function(){
+    var label = $('span', copyBtn);
+    var done = function(){ label.textContent = '已复制 @Jun0bj'; setTimeout(function(){ label.textContent = '复制 Telegram'; }, 1600); };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText('@Jun0bj').then(done, done); else done();
+  });
+
+  // 入场与语言条动画
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var bars = $$('#langs .bar');
+  function growBars(){ bars.forEach(function(b){ b.style.width = b.getAttribute('data-w') + '%'; }); }
+  if ('IntersectionObserver' in window && !reduce) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (!e.isIntersecting) return;
+        e.target.classList.add('in');
+        if (e.target.id === 'langs') growBars();
+        io.unobserve(e.target);
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.1 });
+    $$('.reveal').forEach(function(el){ io.observe(el); });
+  } else {
+    $$('.reveal').forEach(function(el){ el.classList.add('in'); });
+    growBars();
+  }
 })();
 </script>
 </body>
